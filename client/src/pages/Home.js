@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+/*import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";*/
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 import "./Home.css";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 
 export function Home() {
-	const [message, setMessage] = useState("Loading...");
+	/*const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
 		fetch("/api")
@@ -21,10 +23,15 @@ export function Home() {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
+	}, []);*/
 
 	return (
-		<main role="main">
+		<div>
+			<Header />
+			<p>Hello World</p>
+			<Footer />
+		</div>
+		/*<main role="main">
 			<div>
 				<img
 					className="logo"
@@ -37,7 +44,7 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 			</div>
-		</main>
+		</main>*/
 	);
 }
 
