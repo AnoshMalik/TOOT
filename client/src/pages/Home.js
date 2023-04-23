@@ -41,14 +41,13 @@ export function Home() {
 	// 		</div>
 	// 	</main>
 	// );
-return (
-	<div>
-		<Header />
-		<h1>Suggestion Generator</h1>
-		<Footer />
-	</div>
-);
-
+	return (
+		<div>
+			<Header />
+			<h1>Suggestion Generator</h1>
+			<Footer />
+		</div>
+	);
 }
 
 export default Home;

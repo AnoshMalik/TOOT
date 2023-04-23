@@ -4,6 +4,6 @@ const Header = () => {
   return (
     <div><button>About</button></div>
   );
-}
+};
 
 export default Header;
