@@ -29,7 +29,9 @@ export function Home() {
 		<div>
 			<Header />
 			<p>Hello World</p>
-			<textarea placeholder="Check your grammar"></textarea>
+				<label htmlFor="review">Review</label>
+				<textarea id="review" name="review" placeholder="write your message here" rows="10" cols="50"></textarea>
+
 			<Footer />
 		</div>
 		/*<main role="main">
