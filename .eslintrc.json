@@ -7,7 +7,6 @@
 	"parser": "@babel/eslint-parser",
 	"root": true,
 	"rules": {
-		 "linebreak-style": ["error", "windows"],
 		"indent": "off",
 		"operator-linebreak": "off"
 	}
