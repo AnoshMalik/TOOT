@@ -29,6 +29,7 @@ export function Home() {
 		<div>
 			<Header />
 			<p>Hello World</p>
+			<textarea placeholder="Check your grammar"></textarea>
 			<Footer />
 		</div>
 		/*<main role="main">
