@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Configuration, OpenAIApi } from "openai";
 
-import db from "./db";
+// import db from "./db";
 
 import logger from "./utils/logger";
 
@@ -29,7 +29,6 @@ router.get("/corrections", async (req, res) => {
 	// eslint-disable-next-line no-console
 	console.log(completion.data.choices[0].text);
 	res.json({ msg: completion.data });
-
 });
 
 export default router;
