@@ -35,6 +35,7 @@ export function Home() {
 			{/* this the label */}
 			<td>
 				<label htmlFor="review">Review</label>
+				{/*textarea with function*/}
 				<textarea
 					value={val}
 					onChange={(e) => setVal(e.target.value)}
