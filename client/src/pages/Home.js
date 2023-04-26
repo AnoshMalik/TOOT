@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";*/
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import Button from "react-bootstrap/Button";
 
 import "./Home.css";
 // import logo from "./logo.svg";
@@ -38,6 +39,7 @@ export function Home() {
 				rows="10"
 				cols="50"
 			></textarea>
+			<Button variant="primary">bootstrap button</Button>
 
 			<Footer />
 		</div>
