@@ -10,7 +10,7 @@ const Header = () => {
 					<img src={logo} alt="logo" style={{ width: "100%" }} />
 				</Col>
 				<Col>
-					<h3 className="text-center font-weight-bold text-danger" >TOOT</h3>
+					<h3 className="text-center font-weight-bold text-danger">TOOT</h3>
 				</Col>
 				<Col lg={1} xl={1} className="ms-auto">
 					<Button variant="danger" style={{ width: "100px" }}>
