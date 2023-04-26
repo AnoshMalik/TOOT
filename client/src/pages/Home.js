@@ -1,12 +1,15 @@
-/*import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";*/
+//import { useEffect, useState } from "react";
+import { useState } from "react";
+//import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import Button from "react-bootstrap/Button";
 
 import "./Home.css";
 // import logo from "./logo.svg";
 
 export function Home() {
+	const [val, setVal] = useState("");
 	/*const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
@@ -30,14 +33,20 @@ export function Home() {
 			<Header />
 			<p>Hello World</p>
 			{/* this the label */}
-			<label htmlFor="review">Review</label>
-			<textarea
-				id="review"
-				name="review"
-				placeholder="write your message here"
-				rows="10"
-				cols="50"
-			></textarea>
+			<td>
+				<label htmlFor="review">Review</label>
+				<textarea
+					value={val}
+					onChange={(e) => setVal(e.target.value)}
+					spellCheck={true}
+					id="review"
+					name="review"
+					placeholder="write your message here"
+					rows="10"
+					cols="50"
+				></textarea>
+			</td>
+			<Button variant="primary">BootstrapButton</Button>
 
 			<Footer />
 		</div>
