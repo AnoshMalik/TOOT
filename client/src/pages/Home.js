@@ -33,18 +33,18 @@ export function Home() {
 			<Header />
 			<p>Hello World</p>
 			{/* this the label */}
-				<label htmlFor="review">Review</label>
-				{/*textarea with function*/}
-				<textarea
-					value={val}
-					onChange={(e) => setVal(e.target.value)}
-					spellCheck={true}
-					id="review"
-					name="review"
-					placeholder="write your message here"
-					rows="10"
-					cols="50"
-				></textarea>
+			<label htmlFor="review">Review</label>
+			{/*textarea with spellcheck function*/}
+			<textarea
+				value={val}
+				onChange={(e) => setVal(e.target.value)}
+				spellCheck={true}
+				id="review"
+				name="review"
+				placeholder="write your message here"
+				rows="10"
+				cols="50"
+			></textarea>
 			<Button variant="primary">BootstrapButton</Button>
 
 			<Footer />
