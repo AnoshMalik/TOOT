@@ -33,7 +33,6 @@ export function Home() {
 			<Header />
 			<p>Hello World</p>
 			{/* this the label */}
-			<td>
 				<label htmlFor="review">Review</label>
 				{/*textarea with function*/}
 				<textarea
@@ -46,7 +45,6 @@ export function Home() {
 					rows="10"
 					cols="50"
 				></textarea>
-			</td>
 			<Button variant="primary">BootstrapButton</Button>
 
 			<Footer />
