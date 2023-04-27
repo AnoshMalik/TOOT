@@ -7,7 +7,7 @@ const Footer = () => {
 			className="bg-danger py-3 border border-dark fixed-bottom "
 			style={{ color: "red", display: "flex", justifyContent: "flex-end" }}
 		>
-			<Card.Img src={TeamLogo} style={{ width: "8%", marginRight:"1%" }} />
+			<Card.Img src={TeamLogo} style={{ width: "8%", marginRight: "1%" }} />
 		</footer>
 	);
 };
