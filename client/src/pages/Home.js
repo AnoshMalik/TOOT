@@ -4,12 +4,14 @@ import { useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Button from "react-bootstrap/Button";
+//import App from "../App";
 
 import "./Home.css";
 // import logo from "./logo.svg";
 
 export function Home() {
 	const [val, setVal] = useState("");
+	const [content, setContent] = useState("");
 	/*const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
@@ -27,24 +29,68 @@ export function Home() {
 				console.error(err);
 			});
 	}, []);*/
+	const onSubmit = (e) => {
+		e.preventDefault(content);
+
+		if (!content) {
+			alert("Add some text");
+			return;
+		} else if (val === content) {
+			alert("update text please");
+		} else {
+			onAdd(content);
+			console.log(onAdd);
+			console.log(content);
+			setContent(content);
+			setVal(content);
+		}
+	};
+
+	const onAdd = async ({ content }) => {
+		const result = await (
+			await fetch("http://localhost:3100/api/corrections", {
+				//const result = await(await fetch(`${ api }/corrections`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					content,
+				}),
+				//body: JSON.stringify(item),
+			})
+		).json();
+
+		if (!result.error) {
+			console.log(result);
+			//navigate("/Loginmain");
+			//window.location.reload();
+		} else {
+			console.log(result.error);
+		}
+	};
 
 	return (
 		<div>
 			<Header />
 			<p>Hello World</p>
 			{/* this the label */}
-			<label htmlFor="review">Review</label>
-			{/*textarea with spellcheck function*/}
-			<textarea
-				value={val}
-				onChange={(e) => setVal(e.target.value)}
-				spellCheck={true}
-				id="review"
-				name="review"
-				placeholder="write your message here"
-				rows="10"
-				cols="50"
-			></textarea>
+			<form id="inputForm" onSubmit={onSubmit}>
+				<div>
+					<label htmlFor="review">Review</label>
+					<textarea
+						//spellCheck={true}
+						id="review"
+						name="review"
+						placeholder="write your message here"
+						rows="10"
+						cols="50"
+						value={content}
+						onChange={(e) => setContent(e.target.value)}
+					></textarea>
+					<input type="submit" value="Submit" />
+				</div>
+			</form>
 			<Button variant="primary">BootstrapButton</Button>
 
 			<Footer />
