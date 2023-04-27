@@ -1,15 +1,16 @@
 //import { useEffect, useState } from "react";
-import { useState } from "react";
+// import { useState } from "react";
 //import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import Button from "react-bootstrap/Button";
+import MainContent from "../Components/MainContent";
+// import Button from "react-bootstrap/Button";
 
 import "./Home.css";
 // import logo from "./logo.svg";
 
 export function Home() {
-	const [val, setVal] = useState("");
+	// const [val, setVal] = useState("");
 	/*const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
@@ -31,11 +32,11 @@ export function Home() {
 	return (
 		<div>
 			<Header />
-			<p>Hello World</p>
+			{/* <p>Hello World</p> */}
 			{/* this the label */}
-			<label htmlFor="review">Review</label>
+			{/* <label htmlFor="review">Review</label> */}
 			{/*textarea with spellcheck function*/}
-			<textarea
+			{/* <textarea
 				value={val}
 				onChange={(e) => setVal(e.target.value)}
 				spellCheck={true}
@@ -45,7 +46,8 @@ export function Home() {
 				rows="10"
 				cols="50"
 			></textarea>
-			<Button variant="primary">BootstrapButton</Button>
+			<Button variant="primary">BootstrapButton</Button> */}
+			<MainContent />
 
 			<Footer />
 		</div>
