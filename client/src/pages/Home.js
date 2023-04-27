@@ -3,11 +3,11 @@
 //import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
 //import App from "../App";
 
 import "./Home.css";
-// import logo from "./logo.svg";
+// import logo from "./logo.svg"; //import for a logo
 
 export function Home() {
 	/*const [val, setVal] = useState("");
@@ -92,7 +92,6 @@ export function Home() {
 				</div>
 			</form>
 			<Button variant="primary">BootstrapButton</Button> */}
-			<MainContent />
 
 			<Footer />
 		</div>
