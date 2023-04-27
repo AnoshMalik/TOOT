@@ -1,5 +1,5 @@
 //import { useEffect, useState } from "react";
-import { useState } from "react";
+//import { useState } from "react";
 //import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -10,8 +10,8 @@ import "./Home.css";
 // import logo from "./logo.svg";
 
 export function Home() {
-	const [val, setVal] = useState("");
-	const [content, setContent] = useState("");
+	/*const [val, setVal] = useState("");
+	const [content, setContent] = useState("");*/
 	/*const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
@@ -29,7 +29,7 @@ export function Home() {
 				console.error(err);
 			});
 	}, []);*/
-	const onSubmit = (e) => {
+	/*const onSubmit = (e) => {
 		e.preventDefault(content);
 
 		if (!content) {
@@ -44,9 +44,9 @@ export function Home() {
 			setContent(content);
 			setVal(content);
 		}
-	};
+	};*/
 
-	const onAdd = async ({ content }) => {
+	/*const onAdd = async ({ content }) => {
 		const result = await (
 			await fetch("http://localhost:3100/api/corrections", {
 				//const result = await(await fetch(`${ api }/corrections`, {
@@ -68,13 +68,13 @@ export function Home() {
 		} else {
 			console.log(result.error);
 		}
-	};
+	};*/
 
 	return (
 		<div>
 			<Header />
-			<p>Hello World</p>
-			{/* this the label */}
+			{/* <p>Hello World</p>
+			 this the label
 			<form id="inputForm" onSubmit={onSubmit}>
 				<div>
 					<label htmlFor="review">Review</label>
@@ -91,7 +91,8 @@ export function Home() {
 					<input type="submit" value="Submit" />
 				</div>
 			</form>
-			<Button variant="primary">BootstrapButton</Button>
+			<Button variant="primary">BootstrapButton</Button> */}
+			<MainContent />
 
 			<Footer />
 		</div>
