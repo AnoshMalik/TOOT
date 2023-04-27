@@ -11,7 +11,7 @@ router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
-
+//get corrections route
 router.get("/corrections", async (req, res) => {
 	const apiKey = process.env.OPENAI_KEY;
 	const configuration = new Configuration({
@@ -24,7 +24,12 @@ router.get("/corrections", async (req, res) => {
 	const text = "I iz v good et coding..";
 	const completion = await openai.createChatCompletion({
 		model: "gpt-3.5-turbo",
-		messages: [{ role: "user", content: `Can you correct this sentence for grammatical issues and give it three options: ${text}` }],
+		messages: [
+			{
+				role: "user",
+				content: `Can you correct this sentence for grammatical issues and give it three options: ${text}`,
+			},
+		],
 	});
 	/*const completion = await openai.createCompletion({
 		model: "text-davinci-003",
