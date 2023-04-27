@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
 const MainContent = () => {
 	// const [val, setVal] = useState("");
+	const [leftMessage, setLeftMessage] = useState("");
+	const [rightMessage, setRightMessage] = useState("");
+
+	useEffect(() => {
+		// setRightMessage(leftMessage);
+	}, []);
+
+	const sendRequest = () => {
+		fetch("http://localhost:3100/api/corrections?grammar="+leftMessage)
+			.then((response) => response.json())
+			.then((data) => {
+				setRightMessage(data.msg.choices[0].message["content"]);
+				console.log(data.msg.choices[0].message["content"]);
+			})
+			.catch((error) => console.error(error));
+		console.log(rightMessage);
+	};
+
+	const setGrammar = (e) => {
+        setLeftMessage(e.currentTarget.value);
+	};
+
 	return (
 		<Container style={{ marginTop: "6%" }}>
 			<Row>
@@ -16,7 +38,9 @@ const MainContent = () => {
 									<Form.Control
 										as="textarea"
 										rows={10}
-										placeholder="write your message here"
+										placeholder="Enter text here.."
+										onChange={setGrammar}
+										value={leftMessage }
 									/>
 								</Form.Group>
 								<Row
@@ -33,6 +57,7 @@ const MainContent = () => {
 										CLEAR
 									</Button>
 									<Button
+										onClick={sendRequest}
 										variant="danger"
 										style={{ width: "100px", marginLeft: "2%" }}
 									>
@@ -62,7 +87,7 @@ const MainContent = () => {
 							<Form>
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
-									<Form.Control as="textarea" rows={10} />
+									<Form.Control as="textarea" rows={10} placeholder="Search Results.." value={rightMessage} />
 								</Form.Group>
 								<Row
 									lg={1}

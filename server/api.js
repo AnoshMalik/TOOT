@@ -21,13 +21,13 @@ router.get("/corrections", async (req, res) => {
 	// const responseGPT = await openai.listEngines();
 	// eslint-disable-next-line no-console
 	// console.log(responseGPT.data);
-	const text = "I iz v good et coding..";
+	const text = req.query.grammar;
 	const completion = await openai.createChatCompletion({
 		model: "gpt-3.5-turbo",
 		messages: [
 			{
 				role: "user",
-				content: `Can you correct this sentence for grammatical issues and give it three options: ${text}`,
+				content: `Can you correct this sentence for grammatical issues : ${text}`,
 			},
 		],
 	});

@@ -13,10 +13,14 @@ import {
 const apiRoot = "/api";
 
 const app = express();
+const cors = require("cors");
 
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(configuredMorgan());
+app.use(cors({ origin: "*" }));
+
+
 
 if (config.production) {
 	app.enable("trust proxy");
