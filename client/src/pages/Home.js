@@ -1,8 +1,9 @@
 //import { useEffect, useState } from "react";
-//import { useState } from "react";
+// import { useState } from "react";
 //import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import MainContent from "../Components/MainContent";
 //import Button from "react-bootstrap/Button";
 //import App from "../App";
 
@@ -10,7 +11,7 @@ import "./Home.css";
 // import logo from "./logo.svg"; //import for a logo
 
 export function Home() {
-	/*const [val, setVal] = useState("");
+	/* const [val, setVal] = useState("");
 	const [content, setContent] = useState("");*/
 	/*const [message, setMessage] = useState("Loading...");
 
@@ -63,7 +64,7 @@ export function Home() {
 
 		if (!result.error) {
 			console.log(result);
-			//navigate("/Loginmain");
+			//navigate("/About");
 			//window.location.reload();
 		} else {
 			console.log(result.error);
@@ -92,6 +93,7 @@ export function Home() {
 				</div>
 			</form>
 			<Button variant="primary">BootstrapButton</Button> */}
+			<MainContent />
 
 			<Footer />
 		</div>
