@@ -39,7 +39,9 @@ export function Home() {
 				rows="10"
 				cols="50"
 			></textarea>
-			<Button variant="primary">bootstrap button</Button>
+			<Button variant="primary" className="mb-2">
+				bootstrap button
+			</Button>
 
 			<Footer />
 		</div>
