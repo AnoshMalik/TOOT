@@ -5,7 +5,7 @@ import { Card, Form, Col, Container, Row } from "react-bootstrap";
 const MainContent = () => {
 	const [val, setVal] = useState("");
 	const [content, setContent] = useState("");
-	//const [response, setResponse] = useState(""); //use state for showing the result data
+	const [response, setResponse] = useState(""); //use state for showing the result data
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -31,6 +31,7 @@ const MainContent = () => {
 		e.preventDefault();
 		setContent("");
 		setVal("");
+		setResponse("");
 	};
 
 	// async to the backend
@@ -50,7 +51,9 @@ const MainContent = () => {
 				}),
 			});
 			const data = await response.json();
+			const result = data.msg.choices[0].message.content;
 			//enter you logic when the fetch is successful
+			setResponse(result);
 			console.log(data);
 		} catch (error) {
 			//enter your logic for when there is an error (ex. error toast)
@@ -58,6 +61,8 @@ const MainContent = () => {
 			console.log(error);
 		}
 	};
+
+	//let x = "";
 
 	return (
 		<Container style={{ marginTop: "6%" }}>
@@ -121,7 +126,7 @@ const MainContent = () => {
 							<Form>
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
-									<Form.Control as="textarea" rows={10} />
+									<Form.Control as="textarea" rows={10} placeholder="Suggestions..." value={ response } readOnly={true} />
 								</Form.Group>
 								<Row
 									lg={1}

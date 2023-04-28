@@ -45,7 +45,9 @@ router.post("/corrections", async (req, res) => {
 
 	// eslint-disable-next-line no-console
 	console.log(completion.data.choices[0].message);
+
 	res.json({ msg: completion.data });
 });
+// eslint-disable-next-line no-console
 
 export default router;
