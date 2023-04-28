@@ -1,22 +1,79 @@
 import React from "react";
-// import { useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
 const MainContent = () => {
-	// const [val, setVal] = useState("");
+	const [val, setVal] = useState("");
+	const [content, setContent] = useState("");
+	//const [response, setResponse] = useState(""); //use state for showing the result data
+
+	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+
+		if (!content) {
+			alert("Add some text");
+			return;
+		} else if (val === content) {
+			alert("update text please");
+		} else {
+			let x = onAdd(content);
+			console.log(x);
+			console.log(content);
+			setContent(content);
+			setVal(content);
+		}
+	};
+
+	//Clear button
+	const onReset = (e) => {
+		e.preventDefault();
+		setContent("");
+		setVal("");
+	};
+
+	// async to the backend
+	const onAdd = async (content) => {
+		console.log(content);
+		try {
+			const response = await fetch("http://localhost:3100/api/corrections", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					content,
+					//your expected POST request payload goes here
+
+					//body: content,
+				}),
+			});
+			const data = await response.json();
+			//enter you logic when the fetch is successful
+			console.log(data);
+		} catch (error) {
+			//enter your logic for when there is an error (ex. error toast)
+
+			console.log(error);
+		}
+	};
+
 	return (
 		<Container style={{ marginTop: "6%" }}>
 			<Row>
 				<Col>
 					<Card>
 						<Card.Body>
-							<Form>
+							<Form onSubmit={onSubmit} onReset={onReset}>
 								<Form.Group controlId="exampleForm.ControlTextarea1">
 									{/* <Form.Label>Textarea 1</Form.Label> */}
 									<Form.Control
 										as="textarea"
 										rows={10}
 										placeholder="write your message here"
+										value={content}
+										onChange={(e) => setContent(e.target.value)}
 									/>
 								</Form.Group>
 								<Row
@@ -26,6 +83,7 @@ const MainContent = () => {
 									style={{ marginTop: "3%", marginRight: "1%" }}
 								>
 									<Button
+										type="reset"
 										variant="danger"
 										className="ms-auto"
 										style={{ width: "100px" }}
@@ -33,6 +91,7 @@ const MainContent = () => {
 										CLEAR
 									</Button>
 									<Button
+										type="submit"
 										variant="danger"
 										style={{ width: "100px", marginLeft: "2%" }}
 									>

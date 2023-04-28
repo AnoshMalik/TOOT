@@ -11,9 +11,12 @@ router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
-//get corrections route
-router.get("/corrections", async (req, res) => {
+
+//post corrections route
+
+router.post("/corrections", async (req, res) => {
 	const apiKey = process.env.OPENAI_KEY;
+	const content = req.body.content; //taking the text data from textarea
 	const configuration = new Configuration({
 		apiKey: apiKey,
 	});
@@ -21,9 +24,10 @@ router.get("/corrections", async (req, res) => {
 	// const responseGPT = await openai.listEngines();
 	// eslint-disable-next-line no-console
 	// console.log(responseGPT.data);
-	const text = "I iz v good et coding..";
+	const text = content;
+	//const text = "I iz v good et coding.."; //hard coded text part for test
 	const completion = await openai.createChatCompletion({
-		model: "gpt-3.5-turbo",
+		model: "gpt-3.5-turbo", //option (text-davinci-003)
 		messages: [
 			{
 				role: "user",
@@ -31,15 +35,17 @@ router.get("/corrections", async (req, res) => {
 			},
 		],
 	});
+
+	//part for text-davinci-003
+
 	/*const completion = await openai.createCompletion({
 		model: "text-davinci-003",
 		prompt: `Can you correct this sentence for grammatical issues and make it old school : ${text}`,
-	});*/
+	}); //console.log(completion.data.choices[0].text);*/
+
 	// eslint-disable-next-line no-console
 	console.log(completion.data.choices[0].message);
-	//console.log(completion.data.choices[0].text);
 	res.json({ msg: completion.data });
 });
-//"text-davinci-003" "gpt-3.5-turbo-0301"
 
 export default router;
