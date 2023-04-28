@@ -12,11 +12,11 @@ const MainContent = () => {
 	}, []);
 
 	const sendRequest = () => {
-		fetch("http://localhost:3100/api/corrections?grammar="+leftMessage)
+		fetch("http://localhost:3100/api/corrections?spellcheck="+leftMessage)
 			.then((response) => response.json())
 			.then((data) => {
-				setRightMessage(data.msg.choices[0].message["content"]);
-				console.log(data.msg.choices[0].message["content"]);
+				setRightMessage(data.msg.choices[0].message.content);
+				console.log(data.msg.choices[0].message.content);
 			})
 			.catch((error) => console.error(error));
 		console.log(rightMessage);
@@ -52,14 +52,14 @@ const MainContent = () => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px" }} title="Remove all Text"
 									>
 										CLEAR
 									</Button>
 									<Button
 										onClick={sendRequest}
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{ width: "100px", marginLeft: "2%" }} title="Check for Suggestions"
 									>
 										CHECK
 									</Button>
@@ -98,13 +98,13 @@ const MainContent = () => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px" }} title="Save to History"
 									>
 										SAVE
 									</Button>
 									<Button
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{ width: "100px", marginLeft: "2%" }} title="Copy to Clipboard"
 									>
 										COPY
 									</Button>

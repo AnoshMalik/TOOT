@@ -12,7 +12,7 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 //get corrections route
-router.get("/corrections", async (req, res) => {
+router.post("/corrections", async (req, res) => {
 	const apiKey = process.env.OPENAI_KEY;
 	const configuration = new Configuration({
 		apiKey: apiKey,
@@ -21,7 +21,7 @@ router.get("/corrections", async (req, res) => {
 	// const responseGPT = await openai.listEngines();
 	// eslint-disable-next-line no-console
 	// console.log(responseGPT.data);
-	const text = req.query.grammar;
+	const text = req.query.spellcheck;
 	const completion = await openai.createChatCompletion({
 		model: "gpt-3.5-turbo",
 		messages: [
