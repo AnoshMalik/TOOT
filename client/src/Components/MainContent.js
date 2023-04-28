@@ -3,11 +3,13 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
 const MainContent = () => {
-	const [val, setVal] = useState("");
-	const [content, setContent] = useState("");
-	const [response, setResponse] = useState(""); //use state for showing the result data
+	const [value, setValue] = useState(""); //use state to set the last know content value
+	const [content, setContent] = useState(""); //use state to hold the content of the input
+	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
+
+	//Submit button
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -15,26 +17,28 @@ const MainContent = () => {
 		if (!content) {
 			alert("Add some text");
 			return;
-		} else if (val === content) {
+		} else if (value === content) {
 			alert("update text please");
 		} else {
 			let x = onAdd(content);
 			console.log(x);
 			console.log(content);
 			setContent(content);
-			setVal(content);
+			setValue(content);
 		}
 	};
 
 	//Clear button
+
 	const onReset = (e) => {
 		e.preventDefault();
 		setContent("");
-		setVal("");
+		setValue("");
 		setResponse("");
 	};
 
-	// async to the backend
+	// async to the backend with fetch and post
+
 	const onAdd = async (content) => {
 		console.log(content);
 		try {
@@ -62,8 +66,6 @@ const MainContent = () => {
 		}
 	};
 
-	//let x = "";
-
 	return (
 		<Container style={{ marginTop: "6%" }}>
 			<Row>
@@ -72,7 +74,6 @@ const MainContent = () => {
 						<Card.Body>
 							<Form onSubmit={onSubmit} onReset={onReset}>
 								<Form.Group controlId="exampleForm.ControlTextarea1">
-									{/* <Form.Label>Textarea 1</Form.Label> */}
 									<Form.Control
 										as="textarea"
 										rows={10}
@@ -126,7 +127,13 @@ const MainContent = () => {
 							<Form>
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
-									<Form.Control as="textarea" rows={10} placeholder="Suggestions..." value={ response } readOnly={true} />
+									<Form.Control
+										as="textarea"
+										rows={10}
+										placeholder="Suggestions..."
+										value={response}
+										readOnly={true}
+									/>
 								</Form.Group>
 								<Row
 									lg={1}
