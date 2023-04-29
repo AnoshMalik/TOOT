@@ -12,8 +12,24 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 
-//post corrections route
+router.get("/stats", (request, response) => {
+	const { count, userId } = request.session;
+	response.json({ count: count, userId: userId });
+	// use {count, userId} for shorthand notation (IF NEEDED!)
+});
 
+router.get("/login", (request, response) => {
+	request.session.count = 0;
+	request.session.userId = "arya123";
+	response.json({ message: "Hi there" });
+});
+
+router.get("/save", (request, response) => {
+	request.session.count++;
+	response.json({ message: "Ok saved!" });
+});
+
+//post corrections route
 router.post("/corrections", async (req, res) => {
 	const apiKey = process.env.OPENAI_KEY;
 	const content = req.body.content; //taking the text data from textarea
