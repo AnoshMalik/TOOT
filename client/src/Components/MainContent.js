@@ -42,7 +42,7 @@ const MainContent = () => {
 	const onAdd = async (content) => {
 		console.log(content);
 		try {
-			const response = await fetch("http://localhost:3100/api/corrections", {
+			const response = await fetch("/api/corrections", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
