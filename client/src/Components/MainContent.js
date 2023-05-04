@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
+import "./MainContent.css";
 const MainContent = () => {
 	const [value, setValue] = useState(""); //use state to set the last know content value
 	const [content, setContent] = useState(""); //use state to hold the content of the input
@@ -67,7 +68,7 @@ const MainContent = () => {
 	};
 
 	return (
-		<Container style={{ marginTop: "6%" }}>
+		<Container className="main-container">
 			<Row>
 				<Col>
 					<Card>
@@ -85,21 +86,22 @@ const MainContent = () => {
 								<Row
 									lg={2}
 									xl={2}
-									className="ms-auto"
-									style={{ marginTop: "3%", marginRight: "1%" }}
+									className="ms-auto margin-row"
+									// style={{ marginTop: "3%", marginRight: "1%" }}
 								>
 									<Button
 										type="reset"
 										variant="danger"
-										className="ms-auto"
-										style={{ width: "100px" }}
+										className="ms-auto button-message"
+										// style={{ width: "100px" }}
 									>
 										CLEAR
 									</Button>
 									<Button
 										type="submit"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										className="button-suggestions"
+										// style={{ width: "100px", marginLeft: "2%" }}
 									>
 										CHECK
 									</Button>
@@ -108,15 +110,15 @@ const MainContent = () => {
 						</Card.Body>
 					</Card>
 				</Col>
-				<Col style={{ display: "contents" }}>
+				<Col className="arrow-icon">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						width="50"
-						height="50"
+						// width="50"
+						// height="50"
 						fill="currentColor"
-						className="bi bi-arrow-right-square-fill"
+						className="bi bi-arrow-right-square-fill arrow-image"
 						viewBox="0 0 16 16"
-						style={{ marginTop: "11%", marginLeft: "2%", marginRight: "2%" }}
+						// style={{ marginTop: "11%", marginLeft: "2%", marginRight: "2%" }}
 					>
 						<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
 					</svg>
@@ -138,19 +140,20 @@ const MainContent = () => {
 								<Row
 									lg={1}
 									xl={1}
-									className="ms-auto"
-									style={{ marginTop: "3%", marginRight: "1%" }}
+									className="ms-auto margin-row"
+									// style={{ marginTop: "3%", marginRight: "1%" }}
 								>
 									<Button
 										variant="danger"
-										className="ms-auto"
-										style={{ width: "100px" }}
+										className="ms-auto button-message"
+										// style={{ width: "100px" }}
 									>
 										SAVE
 									</Button>
 									<Button
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										className="button-suggestions"
+										// style={{ width: "100px", marginLeft: "2%" }}
 									>
 										COPY
 									</Button>
