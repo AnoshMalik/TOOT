@@ -24,10 +24,11 @@ const Header = () => {
 					<ProfileIcone />
 				</Col>
 			</Navbar>
-			<div
-				className="bg-danger py-3"
-				style={{ textAlign: "center", color: "white" }}
-			>
+			<div className="bg-danger py-3 text-center" style={{ color: "white" }}>
+				<h6>
+					Our all-in-one writing helper tool is designed to reduce mistake,
+					improve grammar and suggest phrases
+				</h6>
 				<Col
 					xs={4}
 					md={3}
