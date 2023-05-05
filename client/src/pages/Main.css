@@ -82,7 +82,7 @@ main button {
 	padding: 20px;
 	background-color: #f2eff0;
 	margin: 0;
-    overflow: scroll; 
+	overflow: scroll;
 }
 
 .history-list-item {
@@ -137,9 +137,9 @@ main button {
 		margin: 0;
 	}
 
-    .history-list {
-        height: 500px;
-    }
+	.history-list {
+		height: 500px;
+	}
 
 	.search-input-form {
 		width: 50%;
@@ -154,21 +154,22 @@ main button {
 
 	.input-buttons-container {
 		display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 20px 20px;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding: 20px 20px;
 	}
 
-    .history-btns {
-        gap: 16px;
-    }
+	.history-btns {
+		gap: 16px;
+	}
 
-    .history-btns button { 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0;margin: 0;
-    }
+	.history-btns button {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+	}
 }

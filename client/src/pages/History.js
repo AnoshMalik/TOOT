@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch, BsSliders, BsSortDown, BsTrash3, BsX } from "react-icons/bs";
 import { FaAngleDown } from "react-icons/fa";
 import "./Main.css";
@@ -27,7 +27,7 @@ const History = () => {
 		"ZIS IZ MY SECOND ANTRY INTO THE APP",
 		"ZIS IZ MY SECOND ANTRY INTO THE APP",
 	];
-	const [data, Setdata] = useState(obj);
+
 	return (
 		<>
 			<main>
@@ -62,7 +62,7 @@ const History = () => {
 						</div>
 					</div>
 					<ul className="history-list">
-						{data.map((text, index) => (
+						{obj.map((text, index) => (
 							<li key={index} className="history-list-item">
 								<p>{text}</p>
 								<button>
