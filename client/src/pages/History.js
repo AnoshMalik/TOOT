@@ -32,7 +32,7 @@ const History = () => {
 
 	return (
 		<>
-		<Header />
+			<Header />
 			<main>
 				<form className="search-input-form">
 					<textarea name="" id="" cols="30" rows="10"></textarea>
