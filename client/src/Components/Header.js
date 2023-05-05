@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/cyf_brand.png";
-import { Navbar, Button, Col } from "react-bootstrap";
+import { Navbar, Col } from "react-bootstrap";
 //header component
 const Header = () => {
 	return (
@@ -20,15 +20,17 @@ const Header = () => {
 					xxl={2}
 					className="ms-auto justify-content-end d-flex"
 				>
-					<Button variant="danger" style={{ width: "100px" }}>
+					{/* <Button variant="danger" style={{ width: "100px" }}>
 						Sign Out
-					</Button>
+					</Button> */}
 				</Col>
 			</Navbar>
-			<div
-				className="bg-danger py-3"
-				style={{ textAlign: "center", color: "white" }}
-			></div>
+			<div className="bg-danger py-3 text-center" style={{ color: "white" }}>
+				<h6>
+					Our all-in-one writing helper tool is designed to reduce mistake,
+					improve grammar and suggest phrases
+				</h6>
+			</div>
 		</>
 	);
 };
