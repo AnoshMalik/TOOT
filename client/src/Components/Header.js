@@ -24,7 +24,14 @@ const Header = () => {
 					<ProfileIcone />
 				</Col>
 			</Navbar>
-			<div className="bg-danger py-3 text-center" style={{ color: "white", display:"grid", gridTemplateColumns:"1fr 4fr 1fr" }}>
+			<div
+				className="bg-danger py-3 text-center"
+				style={{
+					color: "white",
+					display: "grid",
+					gridTemplateColumns: "1fr 4fr 1fr",
+				}}
+			>
 				<div></div>
 				<h6>
 					Our all-in-one writing helper tool is designed to reduce mistake,
