@@ -2,6 +2,8 @@ import React from "react";
 import { BsSearch, BsSliders, BsSortDown, BsTrash3, BsX } from "react-icons/bs";
 import { FaAngleDown } from "react-icons/fa";
 import "./Main.css";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 const History = () => {
 	const obj = [
@@ -30,6 +32,7 @@ const History = () => {
 
 	return (
 		<>
+		<Header />
 			<main>
 				<form className="search-input-form">
 					<textarea name="" id="" cols="30" rows="10"></textarea>
@@ -73,6 +76,7 @@ const History = () => {
 					</ul>
 				</section>
 			</main>
+			<Footer />
 		</>
 	);
 };
