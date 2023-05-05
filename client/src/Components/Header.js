@@ -24,7 +24,8 @@ const Header = () => {
 					<ProfileIcone />
 				</Col>
 			</Navbar>
-			<div className="bg-danger py-3 text-center" style={{ color: "white" }}>
+			<div className="bg-danger py-3 text-center" style={{ color: "white", display:"grid", gridTemplateColumns:"1fr 4fr 1fr" }}>
+				<div></div>
 				<h6>
 					Our all-in-one writing helper tool is designed to reduce mistake,
 					improve grammar and suggest phrases
@@ -35,7 +36,7 @@ const Header = () => {
 					lg={3}
 					xl={3}
 					xxl={2}
-					className="ms-auto justify-content-end d-flex"
+					className="justify-content d-flex"
 				>
 					<Button
 						href="/about/this/site"
