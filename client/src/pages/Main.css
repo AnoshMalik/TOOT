@@ -1,0 +1,175 @@
+button {
+	border: none;
+	background: none;
+}
+
+.search-input-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+main textarea {
+	padding: 20px;
+	background-color: #f2eff0;
+	width: 310px;
+	display: block;
+	margin-top: 20px;
+	border: 1px solid black;
+	border-radius: 40px;
+}
+
+main button {
+	font-size: 50px;
+	display: block;
+	text-align: center;
+	margin: 20px auto 0;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+.main-history-header {
+	margin: 40px 0 0;
+	padding: 16px;
+	color: #fff;
+	display: block;
+	width: 100%;
+	background-color: rgb(142, 8, 8);
+}
+
+.input-buttons-container {
+	padding: 40px 0 0;
+	background-color: #f2eff0;
+}
+
+.history-sec-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.history-sec-form button {
+	background-color: #ee4344;
+	font-size: 28px;
+	padding: 0px 10px 6px;
+	color: #fff;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	margin: auto 0;
+}
+
+.history-sec-form input {
+	padding: 8px;
+	width: 280px;
+	height: 48px;
+	border: 1px solid black;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.history-btns {
+	display: flex;
+}
+
+.history-btns button {
+	font-size: 26px;
+}
+
+/* list-scroll */
+.history-list {
+	padding: 20px;
+	background-color: #f2eff0;
+	margin: 0;
+	overflow: scroll;
+}
+
+.history-list-item {
+	font-size: 24px;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	border: 1px solid black;
+	padding: 6px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	justify-content: space-between;
+}
+
+.history-list-item p {
+	box-sizing: border-box;
+	margin: 0;
+	font-size: 14px;
+	padding: 0;
+}
+
+.history-list-item button {
+	height: 26px;
+	display: inline-flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	color: #ee4344;
+}
+
+@media only screen and (min-width: 700px) {
+	main textarea {
+		width: 500px;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	main {
+		display: flex;
+		/* width: 100%; */
+	}
+
+	.main-history {
+		margin: 0;
+		width: 50%;
+		order: 0;
+		background-color: #f2eff0;
+	}
+
+	.main-history-header {
+		margin: 0;
+	}
+
+	.history-list {
+		height: 500px;
+	}
+
+	.search-input-form {
+		width: 50%;
+		order: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 0;
+		padding: 20px;
+	}
+
+	.input-buttons-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding: 20px 20px;
+	}
+
+	.history-btns {
+		gap: 16px;
+	}
+
+	.history-btns button {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+	}
+}
