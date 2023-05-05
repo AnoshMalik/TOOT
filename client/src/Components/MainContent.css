@@ -1,0 +1,54 @@
+/* /////////////Header/////////// */
+
+.header-image {
+	width: 100%;
+}
+
+.signout-button {
+	width: 100px;
+}
+
+/* /////////////MainContent////////////// */
+
+.main-container {
+	margin-top: 6%;
+}
+
+.margin-row {
+	margin-top: 3%;
+	margin-right: 1%;
+}
+
+.button-message {
+	width: 100px;
+}
+
+.button-suggestions {
+	width: 100px;
+	margin-left: 2%;
+}
+
+.arrow-icon {
+	display: contents;
+}
+
+.arrow-image {
+	width: 50px;
+	height: 50px;
+	margin-top: 11%;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+
+/* //////////////FOOTER//////////////// */
+
+footer {
+	color: red;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.card-image {
+	width: 8%;
+	margin-right: 1%;
+}
