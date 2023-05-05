@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/cyf_brand.png";
-import { Navbar, Button, Col } from "react-bootstrap";
+import { Navbar, Col } from "react-bootstrap";
 //header component
 const Header = () => {
 	return (
@@ -25,13 +25,10 @@ const Header = () => {
 					</Button> */}
 				</Col>
 			</Navbar>
-			<div
-				className="bg-danger py-3 text-center"
-				style={{ color: "white" }}
-			>
+			<div className="bg-danger py-3 text-center" style={{ color: "white" }}>
 				<h6>
-					Our all-in-one writing helper tool is designed to reduce
-					mistake,improve grammar and suggest phrases
+					Our all-in-one writing helper tool is designed to reduce mistake,
+					improve grammar and suggest phrases
 				</h6>
 			</div>
 		</>

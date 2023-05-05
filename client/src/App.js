@@ -6,8 +6,8 @@ import LandingPage from "./pages/LandingPage";
 
 const App = () => (
 	<Routes>
-		<Route path="/" element={<LandingPage />} />
-		<Route path="/home" element={<Home />} />
+		<Route path="/" element={<Home />} />
+		<Route path="/LandingPage" element={<LandingPage />} />
 		<Route path="/about/this/site" element={<About />} />
 	</Routes>
 );
