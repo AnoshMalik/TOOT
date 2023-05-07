@@ -22,7 +22,7 @@ const MainContent = () => {
 	const handleSpeak = () => {
 		if (synth) {
 			if (response == "") {
-				synth.text = "Please enter your text on the left" ;
+				synth.text = "Please enter your text on the left";
 			} else {
 				synth.text = "Here are your suggestions! " + response;
 			}
