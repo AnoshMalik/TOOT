@@ -4,6 +4,10 @@ import Footer from "../Components/Footer";
 import TeamLogo from "../assets/TeamLogo.png";
 import Header from "../Components/Header";
 const LandingPage = () => {
+	const github = () => {
+		window.open("http://localhost:3000/api/auth/github", "_self");
+	};
+
 	return (
 		<>
 			<Header />
@@ -22,14 +26,14 @@ const LandingPage = () => {
 				<Card.Body>
 					<Card.Title style={{ marginTop: "10%" }}>Welcome to TOOT</Card.Title>
 					<Card.Text>
-						<h6>
-							Log in with your GitHub account to <br /> continue
-						</h6>
+						Log in with your GitHub account to <br /> continue
 					</Card.Text>
 					<Button
-						href="/about/this/site"
+						type="submit"
+						//href="/about/this/site"
 						variant="danger "
 						style={{ marginTop: "20%" }}
+						onClick={github}
 					>
 						Log in with GitHub
 					</Button>
