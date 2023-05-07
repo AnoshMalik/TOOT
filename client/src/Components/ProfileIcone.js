@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import icon from "../assets/Icon.png";
-const ProfileIcone = () => {
+const ProfileIcone = ({ user }) => {
 	const [show, setShow] = useState(false);
+
+	const logout = () => {
+		window.open("http://localhost:3000/api/auth/logout", "_self");
+	};
 
 	return (
 		<>
@@ -11,7 +15,7 @@ const ProfileIcone = () => {
 				style={{ background: "transparent", border: "none" }}
 			>
 				<img
-					src={icon}
+					src={user ? user.avatar : icon}
 					alt="Icon"
 					style={{ width: "35px", height: "35px", borderRadius: "100%" }}
 				/>
@@ -26,11 +30,15 @@ const ProfileIcone = () => {
 			>
 				<Modal.Header closeButton>
 					<Modal.Title id="example-custom-modal-styling-title">
-						Profile
+						{user ? user.username : "Profile"}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Button>Sign Out</Button>
+					{user ? (
+						<Button type="submit" onClick={logout}>
+							Sign Out
+						</Button>
+					) : null}
 				</Modal.Body>
 			</Modal>
 		</>

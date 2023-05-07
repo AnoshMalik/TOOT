@@ -10,7 +10,7 @@ import MainContent from "../Components/MainContent";
 import "./Home.css";
 // import logo from "./logo.svg"; //import for a logo
 
-export function Home() {
+export function Home({ user }) {
 	/* const [val, setVal] = useState("");
 	const [content, setContent] = useState("");*/
 	/*const [message, setMessage] = useState("Loading...");
@@ -73,7 +73,7 @@ export function Home() {
 
 	return (
 		<div>
-			<Header />
+			<Header user={user} />
 			{/* <p>Hello World</p>
 			 this the label
 			<form id="inputForm" onSubmit={onSubmit}>
