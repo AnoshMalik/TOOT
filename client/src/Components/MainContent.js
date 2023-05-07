@@ -1,15 +1,35 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
+
 const MainContent = () => {
 	const [value, setValue] = useState(""); //use state to set the last know content value
 	const [content, setContent] = useState(""); //use state to hold the content of the input
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
+	const [synth, setSynth] = useState(null); //SPEECH OUTPUT FEATURE
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
 	//Submit button
+
+
+
+	// SPEECH OUTPUT FEATURE
+	useEffect(() => {
+		const synth = new SpeechSynthesisUtterance();
+		setSynth(synth);
+	}, []);
+
+	const handleSpeak = () => {
+		if (synth) {
+			synth.text = "Here are your suggestions! " + response;
+			window.speechSynthesis.speak(synth);
+		}
+	};
+	// SPEECH OUTPUT FEATURE
+
+
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -141,6 +161,23 @@ const MainContent = () => {
 									className="ms-auto"
 									style={{ marginTop: "3%", marginRight: "1%" }}
 								>
+									<Button
+										onClick={handleSpeak}
+										variant="danger"
+										// className="ms-auto"
+										style={{ width: "50px" }}
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="22"
+											height="22"
+											fill="currentColor"
+											className="bi bi-megaphone-fill"
+											viewBox="0 0 16 16"
+										>
+											<path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z" />
+										</svg> </Button>
+
 									<Button
 										variant="danger"
 										className="ms-auto"
