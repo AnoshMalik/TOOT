@@ -8,6 +8,7 @@ const MainContent = () => {
 	const [content, setContent] = useState(""); //use state to hold the content of the input
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
 	const [synth, setSynth] = useState(null); //SPEECH OUTPUT FEATURE
+	const [speechToggle, SetSpeechToggle] = useState(1);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -26,8 +27,25 @@ const MainContent = () => {
 			} else {
 				synth.text = "Here are your suggestions! " + response;
 			}
-			window.speechSynthesis.speak(synth);
+			if (speechToggle % 2 == 0) {
+				SetSpeechToggle(speechToggle + 1);
+				window.speechSynthesis.cancel();
+			} else {
+				SetSpeechToggle(speechToggle + 1);
+				window.speechSynthesis.speak(synth);
+			}
 		}
+
+		const handleBeforeUnload = (event) => {
+			event.preventDefault();
+			window.speechSynthesis.cancel();
+		};
+
+		window.addEventListener("beforeunload", handleBeforeUnload);
+
+		return () => {
+			window.removeEventListener("beforeunload", handleBeforeUnload);
+		};
 	};
 	// SPEECH OUTPUT FEATURE
 
