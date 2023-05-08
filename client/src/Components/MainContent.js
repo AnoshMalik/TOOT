@@ -9,6 +9,7 @@ const MainContent = () => {
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
 	const [synth, setSynth] = useState(null); //SPEECH OUTPUT FEATURE
 	const [speechToggle, SetSpeechToggle] = useState(1);
+	const [timeOutId, SetTimeOutId] = useState(null);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -17,10 +18,23 @@ const MainContent = () => {
 	// SPEECH OUTPUT FEATURE
 	useEffect(() => {
 		const synth = new SpeechSynthesisUtterance();
+		const voices = window.speechSynthesis.getVoices();
+		synth.voice = voices[0];
+		synth.lang = "en-GB";
 		setSynth(synth);
 	}, []);
 
+	// useEffect(() => {
+	// 	const synth = new SpeechSynthesisUtterance();
+	// 	synth.onend = () => {
+	// 		console.log("Not speaking");
+	// 		window.speechSynthesis.cancel();
+	// 		clearTimeout(timeOutId);
+	// 	};
+	// });
+
 	const handleSpeak = () => {
+		// e.preventDefault();
 		if (synth) {
 			if (response == "") {
 				synth.text = "Please enter your text on the left";
@@ -28,11 +42,40 @@ const MainContent = () => {
 				synth.text = "Here are your suggestions! " + response;
 			}
 			if (speechToggle % 2 == 0) {
+				console.log("Stopped");
+
 				SetSpeechToggle(speechToggle + 1);
 				window.speechSynthesis.cancel();
+				clearTimeout(timeOutId);
+				console.log("CLEAR TIMEOUT CALLED");
 			} else {
+				console.log("Playing");
+
 				SetSpeechToggle(speechToggle + 1);
 				window.speechSynthesis.speak(synth);
+				// FOLLOWING LINES ARE NEEDED TO STOP CHROME CUTTING AUDIO OFF AFTER 15 SECONDS
+				window.speechSynthesis.pause();
+				console.log("PAUSED");
+				window.speechSynthesis.resume();
+				console.log("RESUMED");
+
+				// STOPS TEXT FROM LOOPING
+				// synth.onend = () => {
+				// 	console.log("Not speaking");
+				// 	window.speechSynthesis.cancel();
+				// 	clearTimeout(timeOutId);
+				// };
+				if (window.speechSynthesis.speaking == false) {
+					console.log("Not speaking");
+					window.speechSynthesis.cancel();
+					clearTimeout(timeOutId);
+				} else {
+					console.log("Speaking");
+					let timeId = setTimeout(handleSpeak, 10000);
+					SetTimeOutId(timeId);
+					console.log("SET TIMEOUT CALLED");
+
+				}
 			}
 		}
 
