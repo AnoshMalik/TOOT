@@ -8,8 +8,10 @@ const MainContent = () => {
 	const [content, setContent] = useState(""); //use state to hold the content of the input
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
 	const [synth, setSynth] = useState(null); //SPEECH OUTPUT FEATURE
-	const [speechToggle, SetSpeechToggle] = useState(1);
+	const [speechToggle, SetSpeechToggle] = useState(0);
 	const [timeOutId, SetTimeOutId] = useState(null);
+	// const [speechIcon, SetSpeechIcon] = useState("bi bi-pause-circle-fill");
+	const [isIconPaused, setIsIconPaused] = useState(false);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -25,13 +27,18 @@ const MainContent = () => {
 	}, []);
 
 	// useEffect(() => {
-	// 	const synth = new SpeechSynthesisUtterance();
-	// 	synth.onend = () => {
-	// 		console.log("Not speaking");
-	// 		window.speechSynthesis.cancel();
-	// 		clearTimeout(timeOutId);
-	// 	};
-	// });
+	// 	// const synth = new SpeechSynthesisUtterance();
+	// 	// synth.onend = () => {
+	// 	// 	console.log("Not speaking");
+	// 	// 	window.speechSynthesis.cancel();
+	// 	// 	clearTimeout(timeOutId);
+	// 	// };
+	// 	if (isIconPaused) {
+	// 		SetSpeechIcon("bi bi-pause-circle-fill");
+	// 	} else {
+	// 		SetSpeechIcon("bi bi-megaphone-fill");
+	// 	}
+	// }, [isIconPaused]);
 
 	const handleSpeak = () => {
 		// e.preventDefault();
@@ -43,15 +50,17 @@ const MainContent = () => {
 			}
 			if (speechToggle % 2 == 0) {
 				console.log("Stopped");
-
 				SetSpeechToggle(speechToggle + 1);
+				setIsIconPaused(false);
+
 				window.speechSynthesis.cancel();
 				clearTimeout(timeOutId);
 				console.log("CLEAR TIMEOUT CALLED");
 			} else {
 				console.log("Playing");
-
 				SetSpeechToggle(speechToggle + 1);
+				setIsIconPaused(true);
+
 				window.speechSynthesis.speak(synth);
 				// FOLLOWING LINES ARE NEEDED TO STOP CHROME CUTTING AUDIO OFF AFTER 15 SECONDS
 				window.speechSynthesis.pause();
@@ -74,7 +83,6 @@ const MainContent = () => {
 					let timeId = setTimeout(handleSpeak, 10000);
 					SetTimeOutId(timeId);
 					console.log("SET TIMEOUT CALLED");
-
 				}
 			}
 		}
@@ -228,16 +236,39 @@ const MainContent = () => {
 										// className="ms-auto"
 										style={{ width: "50px" }}
 									>
-										<svg
+										{isIconPaused ? (
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="22"
+												height="22"
+												fill="currentColor"
+												className="bi bi-pause-circle-fill"
+												viewBox="0 0 16 16"
+											>
+												<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z" />
+											</svg>
+										) : (
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="22"
+												height="22"
+												fill="currentColor"
+												className="bi bi-megaphone-fill"
+												viewBox="0 0 16 16"
+											>
+												<path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z" />
+											</svg>
+										)}
+										{/* <svg
 											xmlns="http://www.w3.org/2000/svg"
 											width="22"
 											height="22"
 											fill="currentColor"
-											className="bi bi-megaphone-fill"
+											className={speechIcon}
 											viewBox="0 0 16 16"
 										>
 											<path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z" />
-										</svg>{" "}
+										</svg>{" "} */}
 									</Button>
 
 									<Button
