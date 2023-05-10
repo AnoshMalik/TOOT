@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 import passport from "passport";
 import "./passport";
 
-//import db from "./db";
+import db from "./db";
 
 import logger from "./utils/logger";
 
@@ -110,5 +110,40 @@ router.post("/corrections", async (req, res) => {
 	res.json({ msg: completion.data });
 });
 // eslint-disable-next-line no-console
+
+// Get all histories from db
+router.get("/history", (req, res) => {
+	const { githubId, search, sort, filterDateFrom, filterDateTo } = req.query;
+
+	if (githubId) {
+		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		if (search && search.length < 50) {
+			query += ` AND ( '${search}' LIKE '%' || history.input || '%' OR '${search}' LIKE '%' || history.output || '%' )`;
+		}
+		if (filterDateFrom) {
+			query += ` AND history.timestamp >= '${filterDateFrom}' `;
+		}
+		if (filterDateTo) {
+			query += ` AND history.timestamp <= '${filterDateTo}' `;
+		}
+		if (["ASC", "DESC"].includes(sort)) {
+			query += `ORDER BY ID ${sort}`;
+		} else {
+			query += "ORDER BY ID ASC";
+		}
+		db.query(query)
+			.then((result) => {
+				res.status(200);
+				res.json({ success: true, message: "success", data: result?.rows });
+			})
+			.catch((error) => {
+				res.status(500);
+				res.json({ success: false, message: error, data: [] });
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!", data: [] });
+	}
+});
 
 export default router;
