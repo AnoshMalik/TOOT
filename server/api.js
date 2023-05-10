@@ -166,4 +166,22 @@ router.post("/history", (req, res) => {
 	}
 });
 
+router.delete("/history", (req, res) => {
+	const { id } = req.body;
+	if (id) {
+		db.query(`DELETE FROM history WHERE id =${id}`)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
+
 export default router;
