@@ -184,4 +184,24 @@ router.delete("/history", (req, res) => {
 	}
 });
 
+router.delete("/histories", (req, res) => {
+	const { github_id } = req.body;
+	if (github_id) {
+		db.query(
+			`DELETE FROM history WHERE user_id=(SELECT id FROM users WHERE github_id = ${github_id}) `
+		)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
+
 export default router;
