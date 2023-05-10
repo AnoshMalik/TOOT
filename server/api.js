@@ -146,4 +146,24 @@ router.get("/history", (req, res) => {
 	}
 });
 
+router.post("/history", (req, res) => {
+	const { user_id, input, output } = req.body;
+	if (user_id && input && output) {
+		db.query(
+			`INSERT INTO history(user_id ,input ,output ) VALUES ('${user_id}' ,'${input}' ,'${output}') RETURNING id`
+		)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
+
 export default router;
