@@ -3,7 +3,7 @@ import logo from "../assets/cyf_brand.png";
 import { Navbar, Button, Col, Card } from "react-bootstrap";
 import ProfileIcone from "./ProfileIcone";
 //header component
-const Header = ({ user }) => {
+const Header = ({ user, text }) => {
 	return (
 		<>
 			<Navbar bg="light" expand="md" className="px-4">
@@ -37,12 +37,7 @@ const Header = ({ user }) => {
 			>
 				<Col></Col>
 				<Col>
-					<div>
-						<h6>
-							Our all-in-one writing helper tool is designed to reduce mistake,
-							improve grammar and suggest phrases
-						</h6>
-					</div>
+					<h6>{text}</h6>
 				</Col>
 				<Col
 					xs={4}
@@ -52,18 +47,10 @@ const Header = ({ user }) => {
 					xxl={2}
 					className="justify-content d-flex"
 				>
-					<Button
-						href="/about/this/site"
-						variant="danger"
-						style={{ width: "100px" }}
-					>
+					<Button href="/" variant="danger" style={{ width: "100px" }}>
 						Home
 					</Button>
-					<Button
-						href="/about/this/site"
-						variant="danger"
-						style={{ width: "100px" }}
-					>
+					<Button href="history" variant="danger" style={{ width: "100px" }}>
 						History
 					</Button>
 				</Col>
