@@ -23,6 +23,20 @@ router.get("/auth/login/success", (req, res) => {
 	}
 });
 
+//RETURN for the frontend authentication fetch method! Don't delete please!
+router.get("/auth/login/profile", (req, res) => {
+	try {
+		if (!req.session.user) {
+			res.json(false);
+			throw new Error("no profile");
+		} else {
+			res.json(true);
+		}
+	} catch (error) {
+		return error;
+	}
+});
+
 router.get("/auth/logout", (req, res) => {
 	req.session = null;
 	res.redirect("/LandingPage");

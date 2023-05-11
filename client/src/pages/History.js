@@ -5,7 +5,7 @@ import "./Main.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
-const History = () => {
+const History = ({ user }) => {
 	const obj = [
 		"THAS AS MY 3RD ENTRY INTO THE CORRECTIONZ BUX",
 		"ZIS IZ MY SECOND ANTRY INTO THE APP",
@@ -32,7 +32,7 @@ const History = () => {
 
 	return (
 		<>
-			<Header />
+			<Header user={user} />
 			<main>
 				<form className="search-input-form">
 					<textarea name="" id="" cols="30" rows="10"></textarea>

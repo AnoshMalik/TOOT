@@ -20,9 +20,9 @@ const MainContent = () => {
 		} else if (value === content) {
 			alert("update text please");
 		} else {
-			let x = onAdd(content);
-			console.log(x);
-			console.log(content);
+			/*let x = onAdd(content);
+			console.log(x);*/
+			onAdd(content);
 			setContent(content);
 			setValue(content);
 		}
@@ -40,7 +40,7 @@ const MainContent = () => {
 	// async to the backend with fetch and post
 
 	const onAdd = async (content) => {
-		console.log(content);
+		//console.log(content);
 		try {
 			const response = await fetch("/api/corrections", {
 				method: "POST",
@@ -58,7 +58,7 @@ const MainContent = () => {
 			const result = data.msg.choices[0].message.content;
 			//enter you logic when the fetch is successful
 			setResponse(result);
-			console.log(data);
+			//console.log(data);
 		} catch (error) {
 			//enter your logic for when there is an error (ex. error toast)
 
