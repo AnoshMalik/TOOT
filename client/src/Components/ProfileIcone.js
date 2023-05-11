@@ -5,7 +5,10 @@ const ProfileIcone = ({ user }) => {
 	const [show, setShow] = useState(false);
 
 	const logout = () => {
-		window.open("http://localhost:3000/api/auth/logout", "_self");
+		window.open(
+			"/api/auth/logout" ?? "http://localhost:3000/api/auth/logout",
+			"_self"
+		);
 	};
 
 	return (

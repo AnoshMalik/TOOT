@@ -105,7 +105,10 @@ const History = ({ user }) => {
 
 	return (
 		<>
-			<Header text="Refresh your memory with all your saved corrections" />
+			<Header
+				user={user}
+				text="Refresh your memory with all your saved corrections"
+			/>
 			<Container style={{ paddingBottom: "75px" }}>
 				<Row
 					className="m-0 my-5 d-flex justify-content-center"
