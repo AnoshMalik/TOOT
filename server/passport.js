@@ -21,8 +21,8 @@ passport.use(
 			clientID: process.env.GITHUB_CLIENT_ID ?? "",
 			clientSecret: process.env.GITHUB_CLIENT_SECRET ?? "",
 			callbackURLa:
-				"http://localhost:3000/api/auth/github/callback" ??
-				"api/auth/github/callback",
+				"/api/auth/github/callback" ??
+				"http://localhost:3000/api/auth/github/callback",
 		},
 		function (accessToken, refreshToken, profile, done) {
 			const user = {

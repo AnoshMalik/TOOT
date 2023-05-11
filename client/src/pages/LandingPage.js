@@ -7,7 +7,10 @@ import gitIcon from "../assets/github.png";
 // import Header from "../Components/Header";
 const LandingPage = () => {
 	const github = () => {
-		window.open("http://localhost:3000/api/auth/github", "_self");
+		window.open(
+			"/api/auth/github" ?? "http://localhost:3000/api/auth/github",
+			"_self"
+		);
 	};
 
 	return (
