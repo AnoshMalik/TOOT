@@ -118,7 +118,7 @@ router.get("/history", (req, res) => {
 	if (githubId) {
 		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
 		if (search && search.length < 50) {
-			query += ` AND ( '${search}' LIKE '%' || history.input || '%' OR '${search}' LIKE '%' || history.output || '%' )`;
+			query += ` AND ( history.input ~* '${search}' OR history.output ~* '${search}')`;
 		}
 		if (filterDateFrom) {
 			query += ` AND history.timestamp >= '${filterDateFrom}' `;
