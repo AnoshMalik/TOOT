@@ -108,12 +108,11 @@ const History = ({ user }) => {
 			<Header />
 			<Container style={{ paddingBottom: "75px" }}>
 				<Row
-					className="m-0 my-5 d-flex justify-content-center "
+					className="m-0 my-5 d-flex justify-content-center"
 					style={{ backgroundColor: "#f2eff0" }}
 				>
 					<div
-						className="p-5 text-white d-block"
-						style={{ backgroundColor: "rgb(142, 8, 8)" }}
+						className="p-5 text-white d-block bg-danger"
 					>
 						<h1>History</h1>
 					</div>
