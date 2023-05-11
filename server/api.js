@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 import passport from "passport";
 import "./passport";
 
-//import db from "./db";
+import db from "./db";
 
 import logger from "./utils/logger";
 
@@ -124,5 +124,98 @@ router.post("/corrections", async (req, res) => {
 	res.json({ msg: completion.data });
 });
 // eslint-disable-next-line no-console
+
+// Get all histories from db
+router.get("/history", (req, res) => {
+	const { githubId, search, sort, filterDateFrom, filterDateTo } = req.query;
+
+	if (githubId) {
+		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		if (search && search.length < 50) {
+			query += ` AND ( history.input ~* '${search}' OR history.output ~* '${search}')`;
+		}
+		if (filterDateFrom) {
+			query += ` AND history.timestamp >= '${filterDateFrom}' `;
+		}
+		if (filterDateTo) {
+			query += ` AND history.timestamp <= '${filterDateTo}' `;
+		}
+		if (["ASC", "DESC"].includes(sort)) {
+			query += `ORDER BY ID ${sort}`;
+		} else {
+			query += "ORDER BY ID ASC";
+		}
+		db.query(query)
+			.then((result) => {
+				res.status(200);
+				res.json({ success: true, message: "success", data: result?.rows });
+			})
+			.catch((error) => {
+				res.status(500);
+				res.json({ success: false, message: error, data: [] });
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!", data: [] });
+	}
+});
+
+router.post("/history", (req, res) => {
+	const { user_id, input, output } = req.body;
+	if (user_id && input && output) {
+		db.query(
+			`INSERT INTO history(user_id ,input ,output ) VALUES ('${user_id}' ,'${input}' ,'${output}') RETURNING id`
+		)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
+
+router.delete("/history", (req, res) => {
+	const { id } = req.body;
+	if (id) {
+		db.query(`DELETE FROM history WHERE id =${id}`)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
+
+router.delete("/histories", (req, res) => {
+	const { github_id } = req.body;
+	if (github_id) {
+		db.query(
+			`DELETE FROM history WHERE user_id=(SELECT id FROM users WHERE github_id = ${github_id}) `
+		)
+			.then((result) => {
+				res.status(200);
+				res.json(result?.rows);
+			})
+			.catch((error) => {
+				res.status(500);
+				res.send(error);
+			});
+	} else {
+		res.status(403);
+		res.json({ success: false, message: "invalid request!" });
+	}
+});
 
 export default router;

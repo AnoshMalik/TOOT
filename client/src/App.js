@@ -102,7 +102,7 @@ const App = () => {
 				</Route>
 				<Route element={<PrivateWrapper />}>
 					<Route path="/" element={<Home user={user} />} />
-					<Route path="/History" element={<History user={user} />} />
+					<Route path="/history" element={<History user={user} />} />
 				</Route>
 				<Route path="/about/this/site" element={<About />} />
 			</Routes>
