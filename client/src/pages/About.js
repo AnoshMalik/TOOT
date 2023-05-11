@@ -13,7 +13,7 @@ const About = () => (
 			</p>
 			{/* <FaLoader spin /> */}
 			{/* <FaSpinner className="animate" /> */}
-			<FontAwesomeIcon icon={faGear} spin />
+			<FontAwesomeIcon icon={faGear} spin style={{ width: "50px", height: "50px" }} />
 			<a href="https://github.com/textbook/starter-kit/wiki">Wiki</a>
 		</div>
 	</main>
