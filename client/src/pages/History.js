@@ -111,9 +111,7 @@ const History = ({ user }) => {
 					className="m-0 my-5 d-flex justify-content-center"
 					style={{ backgroundColor: "#f2eff0" }}
 				>
-					<div
-						className="p-5 text-white d-block bg-danger"
-					>
+					<div className="p-5 text-white d-block bg-danger">
 						<h1>History</h1>
 					</div>
 					<div
