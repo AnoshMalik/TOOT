@@ -73,7 +73,10 @@ export function Home({ user }) {
 
 	return (
 		<div>
-			<Header user={user} />
+			<Header
+				user={user}
+				text="Enter your text and retrieve your corrected results"
+			/>
 			{/* <p>Hello World</p>
 			 this the label
 			<form id="inputForm" onSubmit={onSubmit}>
