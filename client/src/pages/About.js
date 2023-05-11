@@ -1,5 +1,7 @@
-import { FaSpinner } from "react-icons/fa";
-import "./Animate.css";
+// import { FaSpinner } from "react-icons/fa";
+// import "./Animate.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => (
 	<main role="main">
@@ -10,7 +12,8 @@ const About = () => (
 				see the wiki:
 			</p>
 			{/* <FaLoader spin /> */}
-			<FaSpinner className="animate" />
+			{/* <FaSpinner className="animate" /> */}
+			<FontAwesomeIcon icon={faGear} spin />
 			<a href="https://github.com/textbook/starter-kit/wiki">Wiki</a>
 		</div>
 	</main>

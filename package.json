@@ -72,6 +72,8 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.21.0",
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@fortawesome/react-fontawesome": "^0.2.0",
 		"bootstrap": "^5.2.3",
 		"cookie-parser": "^1.4.6",
 		"cookie-session": "^2.0.0",
