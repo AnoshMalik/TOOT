@@ -3,7 +3,7 @@ import logo from "../assets/cyf_brand.png";
 import { Navbar, Button, Col, Card } from "react-bootstrap";
 import ProfileIcon from "./ProfileIcon";
 //header component
-const Header = ({ user, text }) => {
+const Header = ({ user, text, homebutton, historybutton }) => {
 	return (
 		<>
 			<Navbar bg="light" expand="md" className="px-4">
@@ -24,7 +24,7 @@ const Header = ({ user, text }) => {
 					{user ? (
 						<Card.Text style={{ marginTop: "12px" }}>{user.username}</Card.Text>
 					) : null}
-					<ProfileIcon user={user} />
+					{user ? <ProfileIcon user={user} /> : null}
 				</Col>
 			</Navbar>
 			<div
@@ -47,10 +47,18 @@ const Header = ({ user, text }) => {
 					xxl={2}
 					className="justify-content d-flex"
 				>
-					<Button href="/" variant="danger" style={{ width: "100px" }}>
+					<Button
+						href="/"
+						variant="danger"
+						style={{ width: "100px", display: homebutton }}
+					>
 						Home
 					</Button>
-					<Button href="history" variant="danger" style={{ width: "100px" }}>
+					<Button
+						href="history"
+						variant="danger"
+						style={{ width: "100px", display: historybutton }}
+					>
 						History
 					</Button>
 				</Col>
@@ -58,5 +66,5 @@ const Header = ({ user, text }) => {
 		</>
 	);
 };
-
+// Header.defaultProps={ text: "Hi there" };
 export default Header;
