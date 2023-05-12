@@ -172,7 +172,7 @@ const MainContent = ({ user }) => {
 			body: JSON.stringify({
 				input: content,
 				output: response,
-				user_id: 1,
+				user_id: 3,
 			}),
 		})
 			.then((res) => res.json())
