@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { Card, Form, Col, Container, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 const MainContent = () => {
 	const [value, setValue] = useState(""); //use state to set the last know content value
@@ -12,6 +14,7 @@ const MainContent = () => {
 	const [timeOutId, SetTimeOutId] = useState(null);
 	// const [speechIcon, SetSpeechIcon] = useState("bi bi-pause-circle-fill");
 	const [isIconPaused, setIsIconPaused] = useState(false);
+	const [loadingResponse, SetLoadingResponse] = useState(false);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -130,6 +133,7 @@ const MainContent = () => {
 
 	const onAdd = async (content) => {
 		//console.log(content);
+		SetLoadingResponse(true);
 		try {
 			const response = await fetch("/api/corrections", {
 				method: "POST",
@@ -148,6 +152,7 @@ const MainContent = () => {
 			//enter you logic when the fetch is successful
 			setResponse(result);
 			//console.log(data);
+			SetLoadingResponse(false);
 		} catch (error) {
 			//enter your logic for when there is an error (ex. error toast)
 
@@ -198,17 +203,31 @@ const MainContent = () => {
 					</Card>
 				</Col>
 				<Col style={{ display: "contents" }}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="50"
-						height="50"
-						fill="currentColor"
-						className="bi bi-arrow-right-square-fill"
-						viewBox="0 0 16 16"
-						style={{ marginTop: "11%", marginLeft: "2%", marginRight: "2%" }}
-					>
-						<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
-					</svg>
+					{loadingResponse ? (
+						<FontAwesomeIcon
+							icon={faGear}
+							spin
+							style={{
+								width: "50px",
+								height: "50px",
+								marginTop: "11%",
+								marginLeft: "2%",
+								marginRight: "2%",
+							}}
+						/>
+					) : (
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="50"
+							height="50"
+							fill="currentColor"
+							className="bi bi-arrow-right-square-fill"
+							viewBox="0 0 16 16"
+							style={{ marginTop: "11%", marginLeft: "2%", marginRight: "2%" }}
+						>
+							<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+						</svg>
+					)}
 				</Col>
 				<Col>
 					<Card>
