@@ -96,7 +96,7 @@ export function Home({ user }) {
 				</div>
 			</form>
 			<Button variant="primary">BootstrapButton</Button> */}
-			<MainContent user={ user } />
+			<MainContent user={user} />
 
 			<Footer />
 		</div>
