@@ -5,7 +5,7 @@ import { Card, Form, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-const MainContent = () => {
+const MainContent = ({ user }) => {
 	const [value, setValue] = useState(""); //use state to set the last know content value
 	const [content, setContent] = useState(""); //use state to hold the content of the input
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
@@ -160,8 +160,10 @@ const MainContent = () => {
 		}
 	};
 
-
+	// DATABASE --> SENDING
 	const saveHandler = async () => {
+		console.log(user.id);
+		// const github_id = user.id;
 		await fetch("/api/history", {
 			method: "POST",
 			headers: {
@@ -174,8 +176,9 @@ const MainContent = () => {
 			}),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log("ERROR ==>" + data));
+			.then((data) => console.log(data));
 	};
+	// DATABASE --> SENDING
 
 	return (
 		<Container style={{ marginTop: "6%" }}>
@@ -310,7 +313,9 @@ const MainContent = () => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }} onClick={ saveHandler}>
+										style={{ width: "100px" }}
+										onClick={saveHandler}
+									>
 										SAVE
 									</Button>
 									<Button
@@ -330,19 +335,3 @@ const MainContent = () => {
 };
 
 export default MainContent;
-
-{
-	/* <p>Hello World</p>
-<label htmlFor="review">Review</label>
-<textarea
-  value={val}
-  onChange={(e) => setVal(e.target.value)}
-  spellCheck={true}
-  id="review"
-  name="review"
-  placeholder="write your message here"
-  rows="10"
-  cols="50"
-></textarea>
-<Button variant="primary">BootstrapButton</Button> */
-	}
