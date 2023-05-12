@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import icon from "../assets/Icon.png";
-const ProfileIcone = ({ user }) => {
+const ProfileIcon = ({ user }) => {
 	const [show, setShow] = useState(false);
 
 	const logout = () => {
@@ -18,6 +18,7 @@ const ProfileIcone = ({ user }) => {
 				style={{ background: "transparent", border: "none" }}
 			>
 				<img
+					crossOrigin="anonymous"
 					src={user ? user.avatar : icon}
 					alt="Icon"
 					style={{ width: "35px", height: "35px", borderRadius: "100%" }}
@@ -48,4 +49,4 @@ const ProfileIcone = ({ user }) => {
 	);
 };
 
-export default ProfileIcone;
+export default ProfileIcon;
