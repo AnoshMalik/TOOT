@@ -53,7 +53,7 @@ router.get("/auth/login/failed", (req, res) => {
 
 router.get(
 	"/auth/github",
-	passport.authenticate("github", { scope: ["profiel"] })
+	passport.authenticate("github", { scope: ["profile"] })
 );
 
 router.get("/auth/github/callback", function (req, res, next) {
@@ -164,7 +164,7 @@ router.post("/history", (req, res) => {
 	const { user_id, input, output } = req.body;
 	if (user_id && input && output) {
 		db.query(
-			`INSERT INTO history(user_id ,input ,output ) VALUES ('${user_id}' ,'${input}' ,'${output}') RETURNING id`
+			`INSERT INTO history(user_id ,input ,output, timestamp ) VALUES ('${user_id}' ,'${input}' ,'${output}', current_timestamp ) RETURNING id`
 		)
 			.then((result) => {
 				res.status(200);

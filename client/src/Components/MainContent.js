@@ -160,6 +160,23 @@ const MainContent = () => {
 		}
 	};
 
+
+	const saveHandler = async () => {
+		await fetch("/api/history", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				input: content,
+				output: response,
+				user_id: 1,
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => console.log("ERROR ==>" + data));
+	};
+
 	return (
 		<Container style={{ marginTop: "6%" }}>
 			<Row>
@@ -293,8 +310,7 @@ const MainContent = () => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
-									>
+										style={{ width: "100px" }} onClick={ saveHandler}>
 										SAVE
 									</Button>
 									<Button
@@ -329,4 +345,4 @@ export default MainContent;
   cols="50"
 ></textarea>
 <Button variant="primary">BootstrapButton</Button> */
-}
+	}
