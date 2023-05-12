@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/cyf_brand.png";
 import { Navbar, Button, Col, Card } from "react-bootstrap";
-import ProfileIcone from "./ProfileIcone";
+import ProfileIcon from "./ProfileIcon";
 //header component
 const Header = ({ user, text }) => {
 	return (
@@ -24,7 +24,7 @@ const Header = ({ user, text }) => {
 					{user ? (
 						<Card.Text style={{ marginTop: "12px" }}>{user.username}</Card.Text>
 					) : null}
-					<ProfileIcone user={user} />
+					<ProfileIcon user={user} />
 				</Col>
 			</Navbar>
 			<div

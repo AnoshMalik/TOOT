@@ -53,7 +53,7 @@ router.get("/auth/login/failed", (req, res) => {
 
 router.get(
 	"/auth/github",
-	passport.authenticate("github", { scope: ["profiel"] })
+	passport.authenticate("github", { scope: ["profile"] })
 );
 
 router.get("/auth/github/callback", function (req, res, next) {

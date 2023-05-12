@@ -13,7 +13,8 @@ const History = ({ user }) => {
 
 	const sendRequest = () => {
 		fetch(
-			`http://localhost:3100/api/history?githubId=${user.id}&search=${search}&sort=${sort}`
+			`/api/history?githubId=${user.id}&search=${search}&sort=${sort}` ??
+				`http://localhost:3100/api/history?githubId=${user.id}&search=${search}&sort=${sort}`
 		)
 			.then((response) => response.json())
 			.then((data) => setHistory(data.data))
