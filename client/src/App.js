@@ -34,6 +34,8 @@ const App = () => {
 							Accept: "application/json",
 							"Content-type": "application/json",
 							"Access-Control-Allow-Credentials": true,
+							//"Access-Control-Allow-Origin": "*",
+							"Access-Control-Allow-Headers": "Content-Type",
 						},
 					}
 				);
@@ -104,7 +106,7 @@ const App = () => {
 					<Route path="/" element={<Home user={user} />} />
 					<Route path="/history" element={<History user={user} />} />
 				</Route>
-				<Route path="/about/this/site" element={<About />} />
+				<Route path="/about/this/site" element={<About user={user} />} />
 			</Routes>
 			{/* <Footer /> */}
 		</div>
