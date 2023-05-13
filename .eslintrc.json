@@ -3,7 +3,7 @@
 		"es6": true,
 		"node": true
 	},
-	"extends": ["@codeyourfuture/standard", "plugin:cypress"],
+	"extends": ["@codeyourfuture/standard"],
 	"parser": "@babel/eslint-parser",
 	"root": true,
 	"rules": {
