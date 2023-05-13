@@ -22,7 +22,12 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					className="ms-auto justify-content-end d-flex"
 				>
 					{user ? (
-						<Card.Text style={{ marginTop: "12px" }}>{user.username}</Card.Text>
+						<Card.Text
+							className="navbar-github-username"
+							style={{ marginTop: "12px" }}
+						>
+							{user.username}
+						</Card.Text>
 					) : null}
 					{user ? <ProfileIcon user={user} /> : null}
 				</Col>
