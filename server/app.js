@@ -30,6 +30,7 @@ app.use(
 		maxAge: 7 * 24 * 60 * 60 * 1000, // 1 Week
 	})
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 

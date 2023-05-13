@@ -30,6 +30,7 @@ const LandingContent = () => {
 						Log in with your GitHub account to <br /> continue
 					</Card.Text>
 					<Button
+						className="github-login-button"
 						type="submit"
 						//href="/about/this/site"
 						variant="outline-light"
