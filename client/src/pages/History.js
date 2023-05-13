@@ -63,12 +63,12 @@ const History = ({ user }) => {
 				.then((data) => console.log(data));
 		}
 	};
-	// how to create summery of string for ...//
-	const excerpt = (content) => {
+	// show shorter version of long text
+	const shortenText = (content) => {
 		const listOfWords = content.trim().split(" ");
 		const truncatedContent = listOfWords.slice(0, 10).join(" ");
-		const excerpt = truncatedContent + "...";
-		return listOfWords.length > 20 ? excerpt : content;
+		const shortVersion = truncatedContent + "...";
+		return listOfWords.length > 20 ? shortVersion : content;
 	};
 
 	function PopUp(props) {
@@ -82,7 +82,7 @@ const History = ({ user }) => {
 				{/* modal is pop up */}
 				<Modal.Header closeButton>
 					<Modal.Title id="contained-modal-title-vcenter">
-						Modal heading
+						Full text
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
@@ -171,7 +171,6 @@ const History = ({ user }) => {
 						{history &&
 							history.map((item, index) => (
 								<button
-									onClick={() => handleModal(item)}
 									key={index}
 									style={{
 										display: "block",
@@ -185,20 +184,24 @@ const History = ({ user }) => {
 											className="m-0 fs-5 w-50"
 											style={{ paddingRight: "30px" }}
 										>
-											{excerpt(item.input)}
+											{shortenText(item.input)}
 										</p>
 										<p
 											className="m-0 fs-5 w-50 "
 											style={{ paddingRight: "30px" }}
 										>
-											{excerpt(item.output)}
+											{shortenText(item.output)}
 										</p>
 									</div>
 									<div className="d-flex justify-content-end align-items-center w-100">
+										<button
+											onClick={() => handleModal(item)}
+											className="btn btn-outline-secondary"
+										>
+											Show more
+										</button>
 										<span className="fs-6 mx-2">
-											{new Date(
-												"2023-05-11 09:26:06.587153+00"
-											).toLocaleString()}
+											{new Date(item.timestamp).toLocaleString()}
 										</span>
 										<button
 											className="py-2 px-0 d-inline-flex align-items-center flex-column justify-content-center m-0 border-0"
