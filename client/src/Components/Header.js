@@ -55,7 +55,6 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					<Button
 						href="/"
 						variant="danger"
-						className="fw-bold"
 						style={{ width: "100px", display: homebutton }}
 					>
 						Home
@@ -63,7 +62,6 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					<Button
 						href="history"
 						variant="danger"
-						className="fw-bold"
 						style={{ width: "100px", display: historybutton }}
 					>
 						History

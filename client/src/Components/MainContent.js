@@ -206,7 +206,7 @@ const MainContent = ({ user }) => {
 										title="Remove all Text"
 										type="reset"
 										variant="danger"
-										className="ms-auto fw-bold"
+										className="ms-auto"
 										style={{ width: "100px" }}
 									>
 										CLEAR
@@ -215,7 +215,6 @@ const MainContent = ({ user }) => {
 										title="Generate your Text"
 										type="submit"
 										variant="danger"
-										className="fw-bold"
 										style={{ width: "100px", marginLeft: "2%" }}
 									>
 										CHECK
@@ -316,7 +315,7 @@ const MainContent = ({ user }) => {
 
 									<Button
 										variant="danger"
-										className="ms-auto fw-bold"
+										className="ms-auto"
 										style={{ width: "100px" }}
 										onClick={saveHandler}
 										title="Save in History"
@@ -326,7 +325,6 @@ const MainContent = ({ user }) => {
 									<Button
 										title="Copy to Clipboard"
 										variant="danger"
-										className="fw-bold"
 										style={{ width: "100px", marginLeft: "2%" }}
 									>
 										COPY
