@@ -11,7 +11,7 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					<img src={logo} alt="logo" style={{ width: "100%" }} />
 				</Col>
 				<Col>
-					<h3 className="text-center font-weight-bold text-danger">TOOT</h3>
+					<h2 className="text-center fw-bold text-danger">TOOT</h2>
 				</Col>
 				<Col
 					xs={4}
