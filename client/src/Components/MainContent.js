@@ -194,6 +194,7 @@ const MainContent = ({ user }) => {
 										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
+										style={{ fontFamily: "Lato" }}
 									/>
 								</Form.Group>
 								<Row
@@ -207,7 +208,7 @@ const MainContent = ({ user }) => {
 										type="reset"
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px", fontFamily: "Lato"  }}
 									>
 										CLEAR
 									</Button>
@@ -215,7 +216,7 @@ const MainContent = ({ user }) => {
 										title="Generate your Text"
 										type="submit"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{ width: "100px", marginLeft: "2%", fontFamily: "Lato" }}
 									>
 										CHECK
 									</Button>
@@ -263,6 +264,7 @@ const MainContent = ({ user }) => {
 										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
+										style={{ fontFamily: "Lato" }}
 									/>
 								</Form.Group>
 								<Row
