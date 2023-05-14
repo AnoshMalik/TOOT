@@ -58,16 +58,16 @@ router.get(
 
 // CYPRESS TEST LOGIN FUNCTION
 // router.get("/auth/github/callback", function (req, res, next) {
-// 	// if (process.env.CYPRESS_TEST) {
-// 	// 	const fakeUser = {
-// 	// 		username: "test-user",
-// 	// 		id: "123",
-// 	// 		avatar: "https://avatars.githubusercontent.com/u/3519251?v=4",
-// 	// 	};
-// 	// 	req.session.user = fakeUser;
-// 	// 	res.redirect("/");
+// 	if (process.env.CYPRESS_TES) {
+// 		const fakeUser = {
+// 			username: "test-user",
+// 			id: "123",
+// 			avatar: "https://avatars.githubusercontent.com/u/3519251?v=4",
+// 		};
+// 		req.session.user = fakeUser;
+// 		res.redirect("/");
 
-// 	// } else {
+// 	} else {
 // 		passport.authenticate("github", function (err, user) {
 // 			req.session.user = user;
 // 			if (err) {
@@ -75,7 +75,7 @@ router.get(
 // 			}
 // 			res.redirect("/");
 // 		})(req, res, next);
-// 	// }
+// 	}
 // });
 // CYPRESS TEST LOGIN FUNCTION
 

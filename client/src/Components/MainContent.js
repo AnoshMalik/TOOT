@@ -191,7 +191,7 @@ const MainContent = ({ user }) => {
 									<Form.Control
 										as="textarea"
 										rows={10}
-										placeholder="write your message here"
+										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
 									/>
@@ -203,6 +203,7 @@ const MainContent = ({ user }) => {
 									style={{ marginTop: "3%", marginRight: "1%" }}
 								>
 									<Button
+										title="Remove all Text"
 										type="reset"
 										variant="danger"
 										className="ms-auto"
@@ -211,6 +212,7 @@ const MainContent = ({ user }) => {
 										CLEAR
 									</Button>
 									<Button
+										title="Generate your Text"
 										type="submit"
 										variant="danger"
 										style={{ width: "100px", marginLeft: "2%" }}
@@ -258,7 +260,7 @@ const MainContent = ({ user }) => {
 									<Form.Control
 										as="textarea"
 										rows={10}
-										placeholder="Suggestions..."
+										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
 									/>
@@ -271,6 +273,7 @@ const MainContent = ({ user }) => {
 								>
 									<Button
 										onClick={handleSpeak}
+										title="Hear your Suggestions"
 										variant="danger"
 										// className="ms-auto"
 										style={{ width: "50px" }}
@@ -315,10 +318,12 @@ const MainContent = ({ user }) => {
 										className="ms-auto"
 										style={{ width: "100px" }}
 										onClick={saveHandler}
+										title="Save in History"
 									>
 										SAVE
 									</Button>
 									<Button
+										title="Copy to Clipboard"
 										variant="danger"
 										style={{ width: "100px", marginLeft: "2%" }}
 									>
