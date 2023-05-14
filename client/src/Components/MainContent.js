@@ -194,7 +194,6 @@ const MainContent = ({ user }) => {
 										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
-										style={{ fontFamily: "Lato" }}
 									/>
 								</Form.Group>
 								<Row
@@ -208,7 +207,7 @@ const MainContent = ({ user }) => {
 										type="reset"
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px", fontFamily: "Lato"  }}
+										style={{ width: "100px" }}
 									>
 										CLEAR
 									</Button>
@@ -216,7 +215,7 @@ const MainContent = ({ user }) => {
 										title="Generate your Text"
 										type="submit"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%", fontFamily: "Lato" }}
+										style={{ width: "100px", marginLeft: "2%" }}
 									>
 										CHECK
 									</Button>
@@ -264,7 +263,6 @@ const MainContent = ({ user }) => {
 										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
-										style={{ fontFamily: "Lato" }}
 									/>
 								</Form.Group>
 								<Row
@@ -318,7 +316,7 @@ const MainContent = ({ user }) => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px", fontFamily: "Lato" }}
+										style={{ width: "100px" }}
 										onClick={saveHandler}
 										title="Save in History"
 									>
@@ -327,7 +325,7 @@ const MainContent = ({ user }) => {
 									<Button
 										title="Copy to Clipboard"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%", fontFamily: "Lato"  }}
+										style={{ width: "100px", marginLeft: "2%" }}
 									>
 										COPY
 									</Button>
