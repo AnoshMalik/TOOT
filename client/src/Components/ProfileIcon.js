@@ -21,7 +21,7 @@ const ProfileIcon = ({ user }) => {
 					crossOrigin="anonymous"
 					src={user ? user.avatar : icon}
 					alt="Icon"
-					style={{ width: "35px", height: "35px", borderRadius: "100%" }}
+					style={{ width: "35px", height: "35px", borderRadius: "100%",boxShadow: "0px 8px 10px lightgrey" }}
 				/>
 			</Button>
 
