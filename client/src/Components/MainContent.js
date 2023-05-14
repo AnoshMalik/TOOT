@@ -316,7 +316,7 @@ const MainContent = ({ user }) => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px", fontFamily: "Lato" }}
 										onClick={saveHandler}
 										title="Save in History"
 									>
@@ -325,7 +325,7 @@ const MainContent = ({ user }) => {
 									<Button
 										title="Copy to Clipboard"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{ width: "100px", marginLeft: "2%", fontFamily: "Lato"  }}
 									>
 										COPY
 									</Button>

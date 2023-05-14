@@ -11,7 +11,7 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					<img src={logo} alt="logo" style={{ width: "100%" }} />
 				</Col>
 				<Col>
-					<h2 className="text-center fw-bold text-danger">TOOT</h2>
+					<h2 className="text-center fw-bold text-danger" style={{ fontFamily: "Lato" }}>TOOT</h2>
 				</Col>
 				<Col
 					xs={4}
@@ -42,7 +42,7 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 			>
 				<Col></Col>
 				<Col>
-					<h6>{text}</h6>
+					<h6 style={{ fontFamily: "Lato" }}>{text}</h6>
 				</Col>
 				<Col
 					xs={4}
@@ -55,14 +55,14 @@ const Header = ({ user, text, homebutton, historybutton }) => {
 					<Button
 						href="/"
 						variant="danger"
-						style={{ width: "100px", display: homebutton }}
+						style={{ width: "100px", display: homebutton, fontFamily: "Lato" }}
 					>
 						Home
 					</Button>
 					<Button
 						href="history"
 						variant="danger"
-						style={{ width: "100px", display: historybutton }}
+						style={{ width: "100px", display: historybutton, fontFamily: "Lato"  }}
 					>
 						History
 					</Button>
