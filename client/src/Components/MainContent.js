@@ -185,7 +185,7 @@ const MainContent = ({ user }) => {
 			<Row>
 				<Col>
 					<Card>
-						<Card.Body>
+						<Card.Body style={{ boxShadow: "0px 8px 10px lightgrey" }}>
 							<Form onSubmit={onSubmit} onReset={onReset}>
 								<Form.Group controlId="exampleForm.ControlTextarea1">
 									<Form.Control
@@ -253,7 +253,7 @@ const MainContent = ({ user }) => {
 				</Col>
 				<Col>
 					<Card>
-						<Card.Body>
+						<Card.Body style={{ boxShadow: "0px 8px 10px lightgrey" }}>
 							<Form>
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
@@ -263,6 +263,7 @@ const MainContent = ({ user }) => {
 										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
+										// style={{ boxShadow: "1px 2px 9px #000000" }}
 									/>
 								</Form.Group>
 								<Row

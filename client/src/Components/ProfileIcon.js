@@ -39,7 +39,7 @@ const ProfileIcon = ({ user }) => {
 				</Modal.Header>
 				<Modal.Body>
 					{user ? (
-						<Button type="submit" onClick={logout}>
+						<Button type="submit" onClick={logout} variant="dark">
 							Sign Out
 						</Button>
 					) : null}
