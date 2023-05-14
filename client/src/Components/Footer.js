@@ -10,6 +10,7 @@ const Footer = ({ aboutlink }) => {
 			<div style={{ marginLeft: "2%" }}>
 				<Nav.Link
 					href="/about/this/site"
+					className="fw-bold"
 					style={{
 						color: "white",
 						textDecoration: "none",
