@@ -15,6 +15,7 @@ const Footer = ({ aboutlink }) => {
 						textDecoration: "none",
 						marginLeft: "2%",
 						display: aboutlink,
+						fontFamily: "Lato",
 					}}
 				>
 					About

@@ -13,6 +13,6 @@ describe("landing page", () => {
 	it("logins via github", () => {
 		cy.visit("http://localhost:3000/api/auth/github/callback");
 		cy.get(".github-login-button").should("not.exist");
-		cy.get(".navbar-github-username").should("contain", "test-accuser");
+		cy.get(".navbar-github-username").should("contain", "test-user");
 	});
 });

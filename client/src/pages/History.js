@@ -80,20 +80,31 @@ const History = ({ user }) => {
 				centered
 			>
 				{/* modal is pop up */}
-				<Modal.Header closeButton>
-					<Modal.Title id="contained-modal-title-vcenter">
-						Modal heading
+				<Modal.Header closeButton style={{ boxShadow: "0px 5px 10px grey " }}>
+					<Modal.Title
+						id="contained-modal-title-vcenter"
+						style={{ fontFamily: "Lato", fontWeight: "bold" }}
+					>
+						Saved Suggestion
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<h4>Input Text</h4>
-					<p>{item.input}</p>
+					<h5 style={{ fontFamily: "Lato", fontWeight: "bold" }}>Input Text</h5>
+					<p style={{ fontFamily: "Lato" }}>{item.input}</p>
 					<hr />
-					<h4>Output Text</h4>
-					<p>{item.output}</p>
+					<h5 style={{ fontFamily: "Lato", fontWeight: "bold" }}>
+						Output Text
+					</h5>
+					<p style={{ fontFamily: "Lato" }}>{item.output}</p>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button onClick={props.onHide}>Close</Button>
+					<Button
+						onClick={props.onHide}
+						variant="danger"
+						style={{ boxShadow: "0px 5px 10px grey ", width: "100px" }}
+					>
+						Close
+					</Button>
 				</Modal.Footer>
 			</Modal>
 		);
@@ -115,8 +126,8 @@ const History = ({ user }) => {
 					className="m-0 my-5 d-flex justify-content-center"
 					style={{ backgroundColor: "#f2eff0" }}
 				>
-					<div className="p-5 text-white d-block bg-danger">
-						<h1>History</h1>
+					<div className="px-5 p-2 text-white d-block bg-danger">
+						<h3 style={{ fontFamily: "Lato" }}>History</h3>
 					</div>
 					<div
 						className="p-5 d-flex justify-content-between flex-sm-row flex-column align-items-center gap-2 "
@@ -133,6 +144,7 @@ const History = ({ user }) => {
 									backgroundColor: "#ee4344",
 									borderTopLeftRadius: "8px",
 									borderBottomLeftRadius: "8px",
+									boxShadow: "0px 5px 10px grey",
 								}}
 							>
 								<BsTrash2 />
@@ -142,7 +154,7 @@ const History = ({ user }) => {
 								onChange={(e) => setSearch(e.target.value)}
 								className="h3 py-1 px-3 border-0 "
 								type="text"
-								style={{ maxWidth: "200px" }}
+								style={{ maxWidth: "200px", boxShadow: "0px 5px 10px grey" }}
 							/>
 						</form>
 						<div className="d-flex">
@@ -177,25 +189,37 @@ const History = ({ user }) => {
 										display: "block",
 										width: "100%",
 										textAlign: "start",
+										boxShadow: "0px 5px 10px grey",
 									}}
 									className="h6 list-unstyled border p-1 mb-2 rounded-1"
 								>
 									<div className="d-flex justify-content-between w-100">
 										<p
-											className="m-0 fs-5 w-50"
-											style={{ paddingRight: "30px" }}
+											className="m-4 fs-5 w-50"
+											style={{
+												paddingRight: "30px",
+												fontFamily: "Lato",
+												fontWeight: "550",
+											}}
 										>
 											{excerpt(item.input)}
 										</p>
 										<p
-											className="m-0 fs-5 w-50 "
-											style={{ paddingRight: "30px" }}
+											className="m-4 fs-5 w-50 "
+											style={{
+												paddingRight: "30px",
+												fontFamily: "Lato",
+												fontWeight: "500",
+											}}
 										>
 											{excerpt(item.output)}
 										</p>
 									</div>
 									<div className="d-flex justify-content-end align-items-center w-100">
-										<span className="fs-6 mx-2">
+										<span
+											className="fs-6 mx-2"
+											style={{ fontWeight: "bold", fontFamily: "Lato" }}
+										>
 											{new Date(
 												"2023-05-11 09:26:06.587153+00"
 											).toLocaleString()}

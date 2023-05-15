@@ -21,7 +21,12 @@ const ProfileIcon = ({ user }) => {
 					crossOrigin="anonymous"
 					src={user ? user.avatar : icon}
 					alt="Icon"
-					style={{ width: "35px", height: "35px", borderRadius: "100%" }}
+					style={{
+						width: "35px",
+						height: "35px",
+						borderRadius: "100%",
+						boxShadow: "0px 8px 10px lightgrey",
+					}}
 				/>
 			</Button>
 
@@ -39,7 +44,12 @@ const ProfileIcon = ({ user }) => {
 				</Modal.Header>
 				<Modal.Body>
 					{user ? (
-						<Button type="submit" onClick={logout}>
+						<Button
+							type="submit"
+							onClick={logout}
+							variant="dark"
+							style={{ width: "100px" }}
+						>
 							Sign Out
 						</Button>
 					) : null}

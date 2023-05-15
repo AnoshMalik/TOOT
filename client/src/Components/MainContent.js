@@ -10,7 +10,7 @@ const MainContent = ({ user }) => {
 	const [content, setContent] = useState(""); //use state to hold the content of the input
 	const [response, setResponse] = useState(""); //use state for showing the result data from fetch
 	const [synth, setSynth] = useState(null); //SPEECH OUTPUT FEATURE
-	const [speechToggle, SetSpeechToggle] = useState(0);
+	const [speechToggle, SetSpeechToggle] = useState(1);
 	const [timeOutId, SetTimeOutId] = useState(null);
 	// const [speechIcon, SetSpeechIcon] = useState("bi bi-pause-circle-fill");
 	const [isIconPaused, setIsIconPaused] = useState(false);
@@ -185,15 +185,16 @@ const MainContent = ({ user }) => {
 			<Row>
 				<Col>
 					<Card>
-						<Card.Body>
+						<Card.Body style={{ boxShadow: "0px 8px 10px lightgrey" }}>
 							<Form onSubmit={onSubmit} onReset={onReset}>
 								<Form.Group controlId="exampleForm.ControlTextarea1">
 									<Form.Control
 										as="textarea"
 										rows={10}
-										placeholder="write your message here"
+										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
+										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
 								</Form.Group>
 								<Row
@@ -203,17 +204,23 @@ const MainContent = ({ user }) => {
 									style={{ marginTop: "3%", marginRight: "1%" }}
 								>
 									<Button
+										title="Remove all Text"
 										type="reset"
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px", boxShadow: "0px 5px 10px grey" }}
 									>
 										CLEAR
 									</Button>
 									<Button
+										title="Generate your Text"
 										type="submit"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{
+											width: "100px",
+											marginLeft: "2%",
+											boxShadow: "0px 5px 10px grey",
+										}}
 									>
 										CHECK
 									</Button>
@@ -251,16 +258,17 @@ const MainContent = ({ user }) => {
 				</Col>
 				<Col>
 					<Card>
-						<Card.Body>
+						<Card.Body style={{ boxShadow: "0px 8px 10px lightgrey" }}>
 							<Form>
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
 									<Form.Control
 										as="textarea"
 										rows={10}
-										placeholder="Suggestions..."
+										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
+										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
 								</Form.Group>
 								<Row
@@ -271,9 +279,10 @@ const MainContent = ({ user }) => {
 								>
 									<Button
 										onClick={handleSpeak}
+										title="Hear your Suggestions"
 										variant="danger"
 										// className="ms-auto"
-										style={{ width: "50px" }}
+										style={{ width: "50px", boxShadow: "0px 5px 10px grey" }}
 									>
 										{isIconPaused ? (
 											<svg
@@ -313,14 +322,20 @@ const MainContent = ({ user }) => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px" }}
+										style={{ width: "100px", boxShadow: "0px 5px 10px grey" }}
 										onClick={saveHandler}
+										title="Save in History"
 									>
 										SAVE
 									</Button>
 									<Button
+										title="Copy to Clipboard"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%" }}
+										style={{
+											width: "100px",
+											marginLeft: "2%",
+											boxShadow: "0px 5px 10px grey",
+										}}
 									>
 										COPY
 									</Button>
