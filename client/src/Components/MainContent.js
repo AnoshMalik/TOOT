@@ -172,7 +172,7 @@ const MainContent = ({ user }) => {
 			body: JSON.stringify({
 				input: content,
 				output: response,
-				user_id: 5,
+				user_id: 3,
 			}),
 		})
 			.then((res) => res.json())
@@ -194,7 +194,7 @@ const MainContent = ({ user }) => {
 										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
-										style={{ boxShadow:"0px 5px 10px grey" }}
+										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
 								</Form.Group>
 								<Row
@@ -208,7 +208,7 @@ const MainContent = ({ user }) => {
 										type="reset"
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px", boxShadow:"0px 5px 10px grey"  }}
+										style={{ width: "100px", boxShadow: "0px 5px 10px grey" }}
 									>
 										CLEAR
 									</Button>
@@ -216,7 +216,11 @@ const MainContent = ({ user }) => {
 										title="Generate your Text"
 										type="submit"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%", boxShadow:"0px 5px 10px grey"  }}
+										style={{
+											width: "100px",
+											marginLeft: "2%",
+											boxShadow: "0px 5px 10px grey",
+										}}
 									>
 										CHECK
 									</Button>
@@ -264,7 +268,7 @@ const MainContent = ({ user }) => {
 										placeholder="View suggestions here..."
 										value={response}
 										readOnly={true}
-										style={{ boxShadow:"0px 5px 10px grey" }}
+										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
 								</Form.Group>
 								<Row
@@ -278,7 +282,7 @@ const MainContent = ({ user }) => {
 										title="Hear your Suggestions"
 										variant="danger"
 										// className="ms-auto"
-										style={{ width: "50px", boxShadow:"0px 5px 10px grey"  }}
+										style={{ width: "50px", boxShadow: "0px 5px 10px grey" }}
 									>
 										{isIconPaused ? (
 											<svg
@@ -318,7 +322,7 @@ const MainContent = ({ user }) => {
 									<Button
 										variant="danger"
 										className="ms-auto"
-										style={{ width: "100px", boxShadow:"0px 5px 10px grey"  }}
+										style={{ width: "100px", boxShadow: "0px 5px 10px grey" }}
 										onClick={saveHandler}
 										title="Save in History"
 									>
@@ -327,7 +331,11 @@ const MainContent = ({ user }) => {
 									<Button
 										title="Copy to Clipboard"
 										variant="danger"
-										style={{ width: "100px", marginLeft: "2%",  boxShadow:"0px 5px 10px grey" }}
+										style={{
+											width: "100px",
+											marginLeft: "2%",
+											boxShadow: "0px 5px 10px grey",
+										}}
 									>
 										COPY
 									</Button>
