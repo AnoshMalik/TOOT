@@ -58,7 +58,7 @@ router.get(
 
 // CYPRESS TEST LOGIN FUNCTION
 // router.get("/auth/github/callback", function (req, res, next) {
-// 	if (process.env.CYPRESS_TES) {
+// 	if (process.env.CYPRESS_TEST) {
 // 		const fakeUser = {
 // 			username: "test-user",
 // 			id: "123",
