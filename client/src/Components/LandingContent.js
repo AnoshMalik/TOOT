@@ -25,8 +25,8 @@ const LandingContent = () => {
 			>
 				<Card.Img src={TeamLogo} style={{ width: "40%" }} />
 				<Card.Body>
-					<Card.Title style={{ marginTop: "10%" }}>Welcome to TOOT</Card.Title>
-					<Card.Text>
+					<Card.Title style={{ marginTop: "10%", fontFamily: "Lato", fontWeight:"bold" }}>Welcome to TOOT</Card.Title>
+					<Card.Text style={{ fontFamily: "Lato" }}>
 						Log in with your GitHub account to <br /> continue
 					</Card.Text>
 					<Button
@@ -40,7 +40,7 @@ const LandingContent = () => {
 						<img
 							src={gitIcon}
 							alt="Icon"
-							style={{ height: "50px", borderRadius: "7px" }}
+							style={{ height: "50px", borderRadius: "7px", boxShadow:"0px 5px 10px grey"  }}
 						/>
 						{/* Log in with GitHub */}
 					</Button>
