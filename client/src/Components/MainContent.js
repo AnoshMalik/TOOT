@@ -189,7 +189,7 @@ const MainContent = ({ user }) => {
 							<Form onSubmit={onSubmit} onReset={onReset}>
 								<Form.Group controlId="exampleForm.ControlTextarea1">
 									<Form.Control
-										as="textarea"
+										as="textarea" className="content-textarea"
 										rows={10}
 										placeholder="Write your text here..."
 										value={content}
@@ -207,7 +207,7 @@ const MainContent = ({ user }) => {
 										title="Remove all Text"
 										type="reset"
 										variant="danger"
-										className="ms-auto"
+										className="ms-auto clear-button"
 										style={{ width: "100px", boxShadow: "0px 5px 10px grey" }}
 									>
 										CLEAR
@@ -216,6 +216,7 @@ const MainContent = ({ user }) => {
 										title="Generate your Text"
 										type="submit"
 										variant="danger"
+										className="check-button"
 										style={{
 											width: "100px",
 											marginLeft: "2%",
@@ -263,7 +264,7 @@ const MainContent = ({ user }) => {
 								<Form.Group controlId="exampleForm.ControlTextarea2">
 									{/* <Form.Label>Textarea 2</Form.Label> */}
 									<Form.Control
-										as="textarea"
+										as="textarea" className="response-textarea"
 										rows={10}
 										placeholder="View suggestions here..."
 										value={response}
@@ -281,7 +282,7 @@ const MainContent = ({ user }) => {
 										onClick={handleSpeak}
 										title="Hear your Suggestions"
 										variant="danger"
-										// className="ms-auto"
+										className="speak-button"
 										style={{ width: "50px", boxShadow: "0px 5px 10px grey" }}
 									>
 										{isIconPaused ? (

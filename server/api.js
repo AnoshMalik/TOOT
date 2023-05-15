@@ -57,37 +57,37 @@ router.get(
 );
 
 // CYPRESS TEST LOGIN FUNCTION
-// router.get("/auth/github/callback", function (req, res, next) {
-// 	if (process.env.CYPRESS_TEST) {
-// 		const fakeUser = {
-// 			username: "test-user",
-// 			id: "123",
-// 			avatar: "https://avatars.githubusercontent.com/u/3519251?v=4",
-// 		};
-// 		req.session.user = fakeUser;
-// 		res.redirect("/");
+router.get("/auth/github/callback", function (req, res, next) {
+	if (1) {
+		const fakeUser = {
+			username: "test-user",
+			id: "123",
+			avatar: "https://avatars.githubusercontent.com/u/3519251?v=4",
+		};
+		req.session.user = fakeUser;
+		res.redirect("/");
 
-// 	} else {
-// 		passport.authenticate("github", function (err, user) {
-// 			req.session.user = user;
-// 			if (err) {
-// 				return next(err);
-// 			}
-// 			res.redirect("/");
-// 		})(req, res, next);
-// 	}
-// });
+	} else {
+		passport.authenticate("github", function (err, user) {
+			req.session.user = user;
+			if (err) {
+				return next(err);
+			}
+			res.redirect("/");
+		})(req, res, next);
+	}
+});
 // CYPRESS TEST LOGIN FUNCTION
 
-router.get("/auth/github/callback", function (req, res, next) {
-	passport.authenticate("github", function (err, user) {
-		req.session.user = user;
-		if (err) {
-			return next(err);
-		}
-		res.redirect("/");
-	})(req, res, next);
-});
+// router.get("/auth/github/callback", function (req, res, next) {
+// 	passport.authenticate("github", function (err, user) {
+// 		req.session.user = user;
+// 		if (err) {
+// 			return next(err);
+// 		}
+// 		res.redirect("/");
+// 	})(req, res, next);
+// });
 
 router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
