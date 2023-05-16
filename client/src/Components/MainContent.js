@@ -181,7 +181,7 @@ const MainContent = ({ user }) => {
 	// DATABASE --> SENDING
 
 	return (
-		<Container style={{ marginTop: "6%" }}>
+		<Container style={{ marginTop: "3%" }}>
 			<Row>
 				<Col>
 					<Card>
