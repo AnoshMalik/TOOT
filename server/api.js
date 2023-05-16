@@ -180,7 +180,7 @@ router.get("/history", (req, res) => {
 router.post("/history", (req, res) => {
 	const { input, output, user_id } = req.body;
 	// eslint-disable-next-line no-console
-	console.log("github id - " + user_id);
+	console.log("user id - " + user_id);
 	if (input && output && user_id) {
 		db.query(
 			`INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
