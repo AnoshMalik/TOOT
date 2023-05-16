@@ -172,7 +172,7 @@ const MainContent = ({ user }) => {
 			body: JSON.stringify({
 				input: content,
 				output: response,
-				user_id: 1,
+				user_id: 3,
 			}),
 		})
 			.then((res) => res.json())
@@ -181,7 +181,7 @@ const MainContent = ({ user }) => {
 	// DATABASE --> SENDING
 
 	return (
-		<Container style={{ marginTop: "6%" }}>
+		<Container style={{ marginTop: "3%" }}>
 			<Row>
 				<Col>
 					<Card>
