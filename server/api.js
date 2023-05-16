@@ -150,18 +150,12 @@ router.post("/corrections", async (req, res) => {
 
 // Get all histories from db
 router.get("/history", (req, res) => {
-	const { githubId, search, sort, filterDateFrom, filterDateTo } = req.query;
+	const { githubId, search, sort } = req.query;
 
 	if (githubId) {
 		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
 		if (search && search.length < 50) {
 			query += ` AND ( history.input ~* '${search}' OR history.output ~* '${search}')`;
-		}
-		if (filterDateFrom) {
-			query += ` AND history.timestamp >= '${filterDateFrom}' `;
-		}
-		if (filterDateTo) {
-			query += ` AND history.timestamp <= '${filterDateTo}' `;
 		}
 		if (["ASC", "DESC"].includes(sort)) {
 			query += `ORDER BY ID ${sort}`;
