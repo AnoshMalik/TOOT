@@ -18,7 +18,8 @@ const History = ({ user }) => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setHistory(data.data); console.log(data.data);
+				setHistory(data.data);
+				console.log(data.data);
 			})
 			.catch((error) => {
 				console.log(error);
