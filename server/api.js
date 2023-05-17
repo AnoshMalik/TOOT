@@ -259,7 +259,9 @@ router.post("/history", (req, res) => {
 	console.log("github id - " + user_id);
 	if (input && output && user_id) {
 		db.query(
-			`INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
+			// `INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
+			"INSERT INTO history (input ,output, user_id, timestamp ) VALUES ($1 , $2, $3, current_timestamp ) RETURNING id",
+			[input, output, user_id]
 		)
 			.then((result) => {
 				res.status(200);

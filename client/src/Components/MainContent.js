@@ -15,6 +15,7 @@ const MainContent = ({ user }) => {
 	// const [speechIcon, SetSpeechIcon] = useState("bi bi-pause-circle-fill");
 	const [isIconPaused, setIsIconPaused] = useState(false);
 	const [loadingResponse, SetLoadingResponse] = useState(false);
+	const [saveCounter, SetSaveCounter] = useState(1);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -107,10 +108,10 @@ const MainContent = ({ user }) => {
 		e.preventDefault();
 
 		if (!content) {
-			alert("Add some text");
+			alert("Please add some text");
 			return;
 		} else if (value === content) {
-			alert("update text please");
+			alert("Please update the text");
 		} else {
 			/*let x = onAdd(content);
 			console.log(x);*/
@@ -162,26 +163,47 @@ const MainContent = ({ user }) => {
 
 	// DATABASE --> SENDING
 	const saveHandler = async () => {
-		console.log(user.id);
-		// const github_id = user.id;
-		await fetch("/api/history", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				input: content,
-				output: response,
-				user_id: 4,
-			}),
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		if (content == "" || response == "") {
+			alert("Please add text and click check");
+			return;
+		} else if (value === content && saveCounter > 1) {
+			alert("Please update text on the left");
+		} else {
+			console.log(user.id);
+			// const github_id = user.id;
+			await fetch("/api/history", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					input: content,
+					output: response,
+					user_id: 3,
+				}),
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data));
+			alert("Saved in History!");
+		}
+		SetSaveCounter(saveCounter + 1);
 	};
 	// DATABASE --> SENDING
 
+	// COPY TO CLIPBOARD
+	async function copyTextToClipboard() {
+		if ("clipboard" in navigator) {
+			await navigator.clipboard.writeText(response);
+			alert("Copied to Clipboard!");
+			return;
+		} else {
+			return document.execCommand("copy", true, response);
+		}
+	}
+	// COPY TO CLIPBOARD
+
 	return (
-		<Container style={{ marginTop: "6%" }}>
+		<Container style={{ marginTop: "3%" }}>
 			<Row>
 				<Col>
 					<Card>
@@ -193,7 +215,10 @@ const MainContent = ({ user }) => {
 										rows={10}
 										placeholder="Write your text here..."
 										value={content}
-										onChange={(e) => setContent(e.target.value)}
+										onChange={(e) => {
+											setContent(e.target.value);
+											setResponse("");
+										}}
 										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
 								</Form.Group>
@@ -336,6 +361,7 @@ const MainContent = ({ user }) => {
 											marginLeft: "2%",
 											boxShadow: "0px 5px 10px grey",
 										}}
+										onClick={copyTextToClipboard}
 									>
 										COPY
 									</Button>
