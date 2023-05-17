@@ -197,6 +197,18 @@ const MainContent = ({ user }) => {
 	};
 	// DATABASE --> SENDING
 
+	// COPY TO CLIPBOARD
+	function copyTextToClipboard() {
+		if ("clipboard" in navigator) {
+			navigator.clipboard.writeText(response);
+			alert("Copied to Clipboard!");
+			return;
+		} else {
+			return document.execCommand("copy", true, response);
+		}
+	}
+	// COPY TO CLIPBOARD
+
 	return (
 		<Container style={{ marginTop: "3%" }}>
 			<Row>
@@ -354,6 +366,7 @@ const MainContent = ({ user }) => {
 											marginLeft: "2%",
 											boxShadow: "0px 5px 10px grey",
 										}}
+										onClick={copyTextToClipboard}
 									>
 										COPY
 									</Button>
