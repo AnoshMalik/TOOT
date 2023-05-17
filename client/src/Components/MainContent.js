@@ -216,7 +216,8 @@ const MainContent = ({ user }) => {
 										placeholder="Write your text here..."
 										value={content}
 										onChange={(e) => {
-											setContent(e.target.value); setResponse("");
+											setContent(e.target.value);
+											setResponse("");
 										}}
 										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>
