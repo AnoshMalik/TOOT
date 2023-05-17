@@ -23,12 +23,13 @@ const MainContent = ({ user }) => {
 
 	// SPEECH OUTPUT FEATURE
 	useEffect(() => {
+		console.log(user);
 		const synth = new SpeechSynthesisUtterance();
 		const voices = window.speechSynthesis.getVoices();
 		synth.voice = voices[0];
 		synth.lang = "en-GB";
 		setSynth(synth);
-	}, []);
+	}, [user]);
 
 	// useEffect(() => {
 	// 	// const synth = new SpeechSynthesisUtterance();
@@ -179,7 +180,7 @@ const MainContent = ({ user }) => {
 				body: JSON.stringify({
 					input: content,
 					output: response,
-					user_id: 3,
+					user_id: user.id,
 				}),
 			})
 				.then((res) => res.json())
@@ -218,6 +219,7 @@ const MainContent = ({ user }) => {
 										onChange={(e) => {
 											setContent(e.target.value);
 											setResponse("");
+											SetSaveCounter(1);
 										}}
 										style={{ boxShadow: "0px 5px 10px grey" }}
 									/>

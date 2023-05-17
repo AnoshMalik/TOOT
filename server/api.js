@@ -79,6 +79,8 @@ router.get("/auth/login/success", (req, res) => {
 			res.json();
 			throw new Error("no user");
 		} else {
+			// eslint-disable-next-line no-console
+			// console.log(req.session.user);
 			res.json(req.session.user);
 		}
 	} catch (err) {
@@ -227,9 +229,12 @@ router.post("/corrections", async (req, res) => {
 // Get all histories from db
 router.get("/history", (req, res) => {
 	const { githubId, search, sort } = req.query;
+	// eslint-disable-next-line no-console
+	console.log("API > GITHUBID > " + githubId);
 
 	if (githubId) {
-		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		// let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		let query = `SELECT * FROM history WHERE user_id = ${githubId} `;
 		if (search && search.length < 50) {
 			query += ` AND ( history.input ~* '${search}' OR history.output ~* '${search}')`;
 		}
