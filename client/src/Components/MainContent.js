@@ -15,6 +15,7 @@ const MainContent = ({ user }) => {
 	// const [speechIcon, SetSpeechIcon] = useState("bi bi-pause-circle-fill");
 	const [isIconPaused, setIsIconPaused] = useState(false);
 	const [loadingResponse, SetLoadingResponse] = useState(false);
+	const [saveCounter, SetSaveCounter] = useState(1);
 
 	//const api = process.env.API_URL || "/api"; //for future easier routing to the routes
 
@@ -160,23 +161,39 @@ const MainContent = ({ user }) => {
 		}
 	};
 
+	const backspaceHandler = (e) => {
+		if (e.key == "Backspace") {
+			setResponse("");
+		}
+		SetSaveCounter(1);
+	};
+
 	// DATABASE --> SENDING
 	const saveHandler = async () => {
-		console.log(user.id);
-		// const github_id = user.id;
-		await fetch("/api/history", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				input: content,
-				output: response,
-				user_id: 3,
-			}),
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		if (content == "" || response == "") {
+			alert("Please add text and click check");
+			return;
+		} else if (value === content && saveCounter > 1) {
+			alert("Please update text on the left");
+		} else {
+			console.log(user.id);
+			// const github_id = user.id;
+			await fetch("/api/history", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					input: content,
+					output: response,
+					user_id: 3,
+				}),
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data));
+			alert("Saved in History!");
+		}
+		SetSaveCounter(saveCounter + 1);
 	};
 	// DATABASE --> SENDING
 
@@ -195,6 +212,7 @@ const MainContent = ({ user }) => {
 										value={content}
 										onChange={(e) => setContent(e.target.value)}
 										style={{ boxShadow: "0px 5px 10px grey" }}
+										onKeyUp={backspaceHandler}
 									/>
 								</Form.Group>
 								<Row
