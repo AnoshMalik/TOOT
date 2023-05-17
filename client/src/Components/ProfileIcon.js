@@ -19,7 +19,7 @@ const ProfileIcon = ({ user }) => {
 			>
 				<img
 					crossOrigin="anonymous"
-					src={user ? user.avatar : icon}
+					src={user ? user.name : icon}
 					alt="Icon"
 					style={{
 						width: "35px",

@@ -5,11 +5,74 @@ import "./passport";
 
 import db from "./db";
 
+//import debe from "../knexfile.js";
+//const debe = require("../db/db-config.js");
+import debe from "../db/db-config.js";
+
 import logger from "./utils/logger";
 
 const router = Router();
 
+/*router.get("/use", async (req, res) => {
+	try {
+	const [users] =  await debe("users").where( { github_id: 85693082 } );
+	//const [users] =  await debe("users").where( { github_id: 8569308 } );
+	if (users) {
+		//res.status(200).json({ message: "No user found!" } );
+	res.status(200).json(users);
+	} else {
+		//res.status(200).json(users);
+		res.status(404).json({ message: "No user found!" });
+	}
+} catch (err) {
+	res.status(500).json({ message: "Error getting users" });
+}
+});*/
+
+//route for testing the database connection
+router.get("/use", async (req, res) => {
+	try {
+		const users = await debe("users").where({ github_id: 85693082 }).first();
+		//const users =  await debe("users").where( { github_id: 8569308 } ).first();
+		if (users) {
+			//res.status(200).json({ message: "No user found!" } );
+			res.status(200).json(users);
+		} else {
+			//res.status(200).json(users);
+			res.status(404).json({ message: "No user found!" });
+		}
+	} catch (err) {
+		res.status(500).json({ message: "Error getting users" });
+	}
+});
+
+/*router.get("/use", (req, res) => {
+	let query = "SELECT * FROM users";
+	db.query(query)
+			.then((result) => {
+				res.status(200);
+				res.json({ result });
+			})
+			.catch((error) => {
+				res.status(500);
+				res.json({ message: error });
+			});
+});*/
+
 //auth
+/*router.get("/auth/login/success", (req, res) => {
+	try {
+		if (!req.session.user) {
+			res.json();
+			throw new Error("no user");
+		} else {
+			res.json(req.session.user);
+		}
+	} catch (err) {
+		return err;
+	}
+});*/
+
 router.get("/auth/login/success", (req, res) => {
 	try {
 		if (!req.session.user) {
@@ -24,6 +87,19 @@ router.get("/auth/login/success", (req, res) => {
 });
 
 //RETURN for the frontend authentication fetch method! Don't delete please!
+/*router.get("/auth/login/profile", (req, res) => {
+	try {
+		if (!req.session.user) {
+			res.json(false);
+			throw new Error("no profile");
+		} else {
+			res.json(true);
+		}
+	} catch (error) {
+		return error;
+	}
+});*/
+
 router.get("/auth/login/profile", (req, res) => {
 	try {
 		if (!req.session.user) {
