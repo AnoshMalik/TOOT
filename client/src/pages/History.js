@@ -182,7 +182,7 @@ const History = ({ user }) => {
 					>
 						{history &&
 							history.map((item, index) => (
-								<button
+								<div
 									key={index}
 									style={{
 										display: "block",
@@ -235,7 +235,7 @@ const History = ({ user }) => {
 											<BsX style={{ fontSize: "44px" }} />
 										</button>
 									</div>
-								</button>
+								</div>
 							))}
 					</ul>
 					<PopUp show={modalShow} onHide={() => setModalShow(false)} />
