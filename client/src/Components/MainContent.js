@@ -108,10 +108,10 @@ const MainContent = ({ user }) => {
 		e.preventDefault();
 
 		if (!content) {
-			alert("Add some text");
+			alert("Please add some text");
 			return;
 		} else if (value === content) {
-			alert("update text please");
+			alert("Please update the text");
 		} else {
 			/*let x = onAdd(content);
 			console.log(x);*/
@@ -161,13 +161,6 @@ const MainContent = ({ user }) => {
 		}
 	};
 
-	const backspaceHandler = (e) => {
-		if (e.key == "Backspace") {
-			setResponse("");
-		}
-		SetSaveCounter(1);
-	};
-
 	// DATABASE --> SENDING
 	const saveHandler = async () => {
 		if (content == "" || response == "") {
@@ -198,9 +191,9 @@ const MainContent = ({ user }) => {
 	// DATABASE --> SENDING
 
 	// COPY TO CLIPBOARD
-	function copyTextToClipboard() {
+	async function copyTextToClipboard() {
 		if ("clipboard" in navigator) {
-			navigator.clipboard.writeText(response);
+			await navigator.clipboard.writeText(response);
 			alert("Copied to Clipboard!");
 			return;
 		} else {
@@ -222,9 +215,10 @@ const MainContent = ({ user }) => {
 										rows={10}
 										placeholder="Write your text here..."
 										value={content}
-										onChange={(e) => setContent(e.target.value)}
+										onChange={(e) => {
+											setContent(e.target.value); setResponse("");
+										}}
 										style={{ boxShadow: "0px 5px 10px grey" }}
-										onKeyUp={backspaceHandler}
 									/>
 								</Form.Group>
 								<Row
