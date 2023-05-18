@@ -17,7 +17,10 @@ const History = ({ user }) => {
 				`http://localhost:3100/api/history?githubId=${user.id}&search=${search}&sort=${sort}`
 		)
 			.then((response) => response.json())
-			.then((data) => setHistory(data.data))
+			.then((data) => {
+				setHistory(data.data);
+				// console.log(data.data);
+			})
 			.catch((error) => {
 				console.log(error);
 			});
@@ -25,6 +28,7 @@ const History = ({ user }) => {
 
 	useEffect(() => {
 		if (user) {
+			// console.log(user);
 			sendRequest();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
