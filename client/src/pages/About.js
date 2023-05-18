@@ -29,7 +29,7 @@ const About = ({ user }) => {
 									fontWeight: "500",
 								}}
 							>
-								TOOT project addresses a critical aspect of communicating Code
+								TOOT project enhancing a critical aspect of communicating Code
 								Your Future between mentors and students. With the
 								implementation of the Open AI (Chat GPT) API to TooT project,
 								the web app creates written interaction for people with
