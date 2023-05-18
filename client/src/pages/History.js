@@ -19,7 +19,7 @@ const History = ({ user }) => {
 			.then((response) => response.json())
 			.then((data) => {
 				setHistory(data.data);
-				console.log(data.data);
+				// console.log(data.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -28,7 +28,7 @@ const History = ({ user }) => {
 
 	useEffect(() => {
 		if (user) {
-			console.log(user);
+			// console.log(user);
 			sendRequest();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

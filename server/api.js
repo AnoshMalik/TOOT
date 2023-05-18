@@ -207,7 +207,7 @@ router.post("/corrections", async (req, res) => {
 		messages: [
 			{
 				role: "user",
-				content: `Can you correct this sentence for grammatical issues and give it three options: ${text}`,
+				content: `Correct the sentence for grammar and spelling errors and suggest three alternatives in a list form: ${text}`,
 			},
 		],
 	});
@@ -220,7 +220,7 @@ router.post("/corrections", async (req, res) => {
 	}); //console.log(completion.data.choices[0].text);*/
 
 	// eslint-disable-next-line no-console
-	console.log(completion.data.choices[0].message);
+	// console.log(completion.data.choices[0].message);
 
 	res.json({ msg: completion.data });
 });
@@ -230,7 +230,7 @@ router.post("/corrections", async (req, res) => {
 router.get("/history", (req, res) => {
 	const { githubId, search, sort } = req.query;
 	// eslint-disable-next-line no-console
-	console.log("API > GITHUBID > " + githubId);
+	// console.log("API > GITHUBID > " + githubId);
 
 	if (githubId) {
 		// let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
@@ -261,7 +261,7 @@ router.get("/history", (req, res) => {
 router.post("/history", (req, res) => {
 	const { input, output, user_id } = req.body;
 	// eslint-disable-next-line no-console
-	console.log("github id - " + user_id);
+	// console.log("github id - " + user_id);
 	if (input && output && user_id) {
 		db.query(
 			// `INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
