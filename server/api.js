@@ -5,12 +5,62 @@ import "./passport";
 
 import db from "./db";
 
+//import debe from "../knexfile.js";
+//const debe = require("../db/db-config.js");
+import debe from "../db/db-config.js";
+
 import logger from "./utils/logger";
 
 const router = Router();
 
+/*router.get("/use", async (req, res) => {
+	try {
+	const [users] =  await debe("users").where( { github_id: 85693082 } );
+	//const [users] =  await debe("users").where( { github_id: 8569308 } );
+	if (users) {
+		//res.status(200).json({ message: "No user found!" } );
+	res.status(200).json(users);
+	} else {
+		//res.status(200).json(users);
+		res.status(404).json({ message: "No user found!" });
+	}
+} catch (err) {
+	res.status(500).json({ message: "Error getting users" });
+}
+});*/
+
+//route for testing the database connection
+router.get("/use", async (req, res) => {
+	try {
+		const users = await debe("users").where({ github_id: 85693082 }).first();
+		//const users =  await debe("users").where( { github_id: 8569308 } ).first();
+		if (users) {
+			//res.status(200).json({ message: "No user found!" } );
+			res.status(200).json(users);
+		} else {
+			//res.status(200).json(users);
+			res.status(404).json({ message: "No user found!" });
+		}
+	} catch (err) {
+		res.status(500).json({ message: "Error getting users" });
+	}
+});
+
+/*router.get("/use", (req, res) => {
+	let query = "SELECT * FROM users";
+	db.query(query)
+			.then((result) => {
+				res.status(200);
+				res.json({ result });
+			})
+			.catch((error) => {
+				res.status(500);
+				res.json({ message: error });
+			});
+});*/
+
 //auth
-router.get("/auth/login/success", (req, res) => {
+/*router.get("/auth/login/success", (req, res) => {
 	try {
 		if (!req.session.user) {
 			res.json();
@@ -21,9 +71,37 @@ router.get("/auth/login/success", (req, res) => {
 	} catch (err) {
 		return err;
 	}
+});*/
+
+router.get("/auth/login/success", (req, res) => {
+	try {
+		if (!req.session.user) {
+			res.json();
+			throw new Error("no user");
+		} else {
+			// eslint-disable-next-line no-console
+			// console.log(req.session.user);
+			res.json(req.session.user);
+		}
+	} catch (err) {
+		return err;
+	}
 });
 
 //RETURN for the frontend authentication fetch method! Don't delete please!
+/*router.get("/auth/login/profile", (req, res) => {
+	try {
+		if (!req.session.user) {
+			res.json(false);
+			throw new Error("no profile");
+		} else {
+			res.json(true);
+		}
+	} catch (error) {
+		return error;
+	}
+});*/
+
 router.get("/auth/login/profile", (req, res) => {
 	try {
 		if (!req.session.user) {
@@ -129,7 +207,7 @@ router.post("/corrections", async (req, res) => {
 		messages: [
 			{
 				role: "user",
-				content: `Can you correct this sentence for grammatical issues and give it three options: ${text}`,
+				content: `Correct the sentence for grammar and spelling errors and suggest three alternatives in a list form: ${text}`,
 			},
 		],
 	});
@@ -142,7 +220,7 @@ router.post("/corrections", async (req, res) => {
 	}); //console.log(completion.data.choices[0].text);*/
 
 	// eslint-disable-next-line no-console
-	console.log(completion.data.choices[0].message);
+	// console.log(completion.data.choices[0].message);
 
 	res.json({ msg: completion.data });
 });
@@ -150,18 +228,15 @@ router.post("/corrections", async (req, res) => {
 
 // Get all histories from db
 router.get("/history", (req, res) => {
-	const { githubId, search, sort, filterDateFrom, filterDateTo } = req.query;
+	const { githubId, search, sort } = req.query;
+	// eslint-disable-next-line no-console
+	// console.log("API > GITHUBID > " + githubId);
 
 	if (githubId) {
-		let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		// let query = `SELECT history.* FROM users INNER JOIN history ON users.id = history.user_id AND users.github_id = ${githubId} `;
+		let query = `SELECT * FROM history WHERE user_id = ${githubId} `;
 		if (search && search.length < 50) {
 			query += ` AND ( history.input ~* '${search}' OR history.output ~* '${search}')`;
-		}
-		if (filterDateFrom) {
-			query += ` AND history.timestamp >= '${filterDateFrom}' `;
-		}
-		if (filterDateTo) {
-			query += ` AND history.timestamp <= '${filterDateTo}' `;
 		}
 		if (["ASC", "DESC"].includes(sort)) {
 			query += `ORDER BY ID ${sort}`;
@@ -186,10 +261,12 @@ router.get("/history", (req, res) => {
 router.post("/history", (req, res) => {
 	const { input, output, user_id } = req.body;
 	// eslint-disable-next-line no-console
-	console.log("github id - " + user_id);
+	// console.log("github id - " + user_id);
 	if (input && output && user_id) {
 		db.query(
-			`INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
+			// `INSERT INTO history(input ,output, user_id, timestamp ) VALUES ('${input}' ,'${output}','${user_id}', current_timestamp ) RETURNING id`
+			"INSERT INTO history (input ,output, user_id, timestamp ) VALUES ($1 , $2, $3, current_timestamp ) RETURNING id",
+			[input, output, user_id]
 		)
 			.then((result) => {
 				res.status(200);
