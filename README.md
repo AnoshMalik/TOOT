@@ -1,5 +1,8 @@
-# Starter Kit
+# 
 
+![](Toot.gif)
+
+<!-- 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 - [x] Full stack ES8+ with [Babel]
@@ -89,3 +92,4 @@ See the guidance in the [wiki].
 [Webpack]: https://webpack.js.org/
 [wiki]: https://github.com/textbook/starter-kit/wiki
 [Winston]: https://github.com/winstonjs/winston
+-->
